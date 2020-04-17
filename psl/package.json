@@ -8,11 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-dev": "node ./node_modules/@angular/cli/bin/ng build --configuration=dev --output-hashing=all",
-    "build-test": "node ./node_modules/@angular/cli/bin/ng build --configuration=test --output-hashing=all",
-    "build-demo": "node ./node_modules/@angular/cli/bin/ng build --configuration=demo --output-hashing=all",
-    "build-staging": "node ./node_modules/@angular/cli/bin/ng build --configuration=staging --output-hashing=all",
-    "build-prod": "node ./node_modules/@angular/cli/bin/ng build --configuration=production --output-hashing=all"
+    "build-prod": "node ./node_modules/@angular/cli/bin/ng build --configuration=production --output-hashing=all --aot"
   },
   "private": true,
   "dependencies": {
