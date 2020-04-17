@@ -1,0 +1,215 @@
+@import '~@angular/material/_theming';
+@import '../../common';
+
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.login {
+
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: $primary-color;
+
+  .header {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+  }
+
+  #signup-link {
+    position: absolute;
+    top: 20px;
+    right: 5%;
+  }
+
+  .link {
+    color: #e57373;
+    color: $primary-color;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .card {
+    @include mat-elevation(16);
+    // background: linear-gradient(to right, mat-color($accent-palette, 100), mat-color($accent-palette, 300));
+    background: #fff;
+    //opacity: 0.9;
+    position: relative;
+    width: 46%;
+    min-width: 556px;
+    height: 560px;
+    position: relative;
+    margin-top: -30px;
+    overflow: hidden;
+
+    .title {
+      text-align: center;
+      z-index: 9;
+      position: absolute;
+      top: 100px;
+      width: 90%;
+      margin: 0 5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h2,
+      h3 {
+        margin: 0;
+        padding: 0;
+      }
+
+      h2 {
+        text-transform: uppercase;
+        font-size: 32px;
+        color: $primary-color;
+      }
+
+      h3 {
+        font-size: 20px;
+        color: #000;
+      }
+    }
+
+    form {
+      position: absolute;
+      top: 120px;
+      width: 76%;
+      margin: 30px 9%;
+      padding: 40px 20px 0 20px;
+      z-index: 9;
+
+      .mat-form-field {
+        width: 90%;
+        margin: 0 5%;
+      }
+
+      input {
+        height: 64px;
+        font-size: 24px;
+      }
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      -webkit-transform: rotate(180deg);
+      /* Chrome and other webkit browsers */
+      -moz-transform: rotate(180deg);
+      /* FF */
+      -o-transform: rotate(180deg);
+      /* Opera */
+      -ms-transform: rotate(180deg);
+      /* IE9 */
+      transform: rotate(180deg);
+      /* W3C compliant browsers */
+
+      /* IE8 and below */
+      filter: progid:DXImageTransform.Microsoft.Matrix(M11=-1, M12=0, M21=0, M22=-1, DX=0, DY=0, SizingMethod='auto expand');
+      z-index: 0;
+    }
+
+    .btn-submit {
+      position: relative;
+      display: inline-block;
+      padding: 18px 0;
+      margin: 30px 0 20px 0;
+      width: 100%;
+      vertical-align: middle;
+      color: #fff;
+      font-size: 32px;
+      line-height: 32px;
+      -webkit-font-smoothing: antialiased;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: transparent;
+      border: 0;
+      opacity: 1;
+      border-bottom: 2px solid #e0f2f1;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: $accent-color;
+      text-shadow: 1px 1px 0 $primary-color;
+    }
+
+    .btn-submit:focus {
+      outline: 0;
+    }
+
+    .btn-submit:hover {
+      background: mat-color($accent-palette, 300);
+    }
+
+    .group {
+      @include mat-elevation(2);
+      position: relative;
+      margin-bottom: 20px;
+      padding: 10px 20px 40px 30px;
+      opacity: 1;
+      background-color: #fff;
+      // background: $primary-color;
+
+      .mat-icon {
+        position: absolute;
+        left: 0px;
+        top: 50px;
+        font-size: 48px;
+        height: 48px;
+        width: 48px;
+      }
+    }
+
+    .group:last-of-type {
+      margin-bottom: 40px;
+    }
+
+    h1,
+    h3 {
+      font-weight: 300;
+    }
+
+    h1 {
+      color: #636363;
+    }
+
+    h3 {
+      color: $primary-color;
+    }
+
+    #powered-by {
+      color: $primary-color;
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1366px) {
+  .login {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    .card {
+      @include mat-elevation(0);
+      min-width: unset;
+      width: 100%;
+      margin-top: 0;
+      height: 100%;
+
+      form {
+        top: 160px;
+      }
+    }
+  }
+}

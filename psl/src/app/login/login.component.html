@@ -1,0 +1,32 @@
+<div class="login">
+  <!-- <img class="logo" src="../../assets/logo.gif"> -->
+  <div class="card">
+    <span class="footer" src="../../assets/logo.gif"></span>
+    <span class="header" src="../../assets/roses-header.png"></span>
+    <div class="title">
+      <h2>Plant Site Logistics</h2>
+      <h3>Demo Site</h3>
+    </div>
+
+    <form [formGroup]="form" (keyup.enter)="onSubmit()">
+      <div class="group">
+        <mat-icon>person</mat-icon>
+        <mat-form-field>
+          <input matInput placeholder="Email Address" type="email" formControlName="email" />
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="group">
+        <mat-icon>lock</mat-icon>
+        <mat-form-field>
+          <input matInput placeholder="Password" type="password" formControlName="password" />
+        </mat-form-field>
+      </div>
+
+      <button type="button" class="btn-submit" (click)="onSubmit()">
+        Login
+      </button>
+    </form>
+  </div>
+</div>

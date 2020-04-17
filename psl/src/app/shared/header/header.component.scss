@@ -1,0 +1,58 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.header {
+  @include primary-gradient();
+  height: 84px;
+  position: relative;
+
+  .logo {
+    height: 100%;
+    margin-left: 88px;
+  }
+
+  .icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: 312px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+
+    .mat-button.header-icon {
+      @include dark-accent-gradient();
+      @include mat-elevation(16);
+      z-index: 10;
+      cursor: pointer;
+      z-index: 10;
+      height: 84px;
+      width: 104px;
+      border-radius: 0;
+      position: relative;
+
+      mat-icon {
+        font-size: 64px;
+        color: #fff;
+        position: absolute;
+        top: 10px;
+        left: 20px;
+      }
+    }
+
+    .mat-button.header-icon:hover {
+      @include silver-gradient();
+      color: $primary-color;
+    }
+
+    .mat-button.header-icon:nth-of-type(2) {
+      @include primary-gradient();
+    }
+
+    .mat-button.header-icon:nth-of-type(2):hover {
+      @include silver-gradient();
+    }
+  }
+}

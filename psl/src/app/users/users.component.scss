@@ -1,0 +1,10 @@
+@import '~@angular/material/_theming';
+@import '../../common';
+
+.wrapper {
+  @include mat-elevation(4);
+  width: 80%;
+  height: 80%;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,125 @@
+<psl-container>
+  <div class="wrapper">
+    <div class="top">
+      <h2>Users</h2>
+      <a class="btn-add" *ngIf="isAccountAdmin" mat-raised-button color="accent">
+        <mat-icon>add</mat-icon>
+        <span class="button-text">New User</span>
+      </a>
+    </div>
+
+    <form [formGroup]="form">
+    </form>
+
+    <div class="grid">
+      <mat-table [dataSource]="users" class="scrollable" matSort (matSortChange)="onSort($event)">
+
+        <!-- First Name Column -->
+        <ng-container matColumnDef="firstName">
+          <mat-header-cell *matHeaderCellDef class="font-effect-3d-float sortable" mat-sort-header
+            (click)="onSort('FirstName')">
+            First Name
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.firstName }}
+          </mat-cell>
+        </ng-container>
+        <!-- First Name Column -->
+
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="lastName">
+          <mat-header-cell *matHeaderCellDef class="font-effect-3d-float sortable" (click)="onSort('LastName')">
+            Last Name
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.lastName }}
+          </mat-cell>
+        </ng-container>
+        <!-- Last Name Column -->
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef class="font-effect-3d-float sortable" (click)="onSort('Email')">
+            Email
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.emailAddress }}
+          </mat-cell>
+        </ng-container>
+        <!-- Email Column -->
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef class="font-effect-3d-float sortable" (click)="onSort('Title')">
+            Title
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.userTitle }}
+          </mat-cell>
+        </ng-container>
+        <!-- Title Column -->
+
+        <!-- Role Column -->
+        <ng-container matColumnDef="role">
+          <mat-header-cell *matHeaderCellDef class="font-effect-3d-float sortable" (click)="onSort('Role')">
+            Role
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.userRole }}
+          </mat-cell>
+        </ng-container>
+        <!-- Role Column -->
+
+        <!-- Locked Column -->
+        <ng-container *ngIf="isAccountAdmin" matColumnDef="locked">
+          <mat-header-cell *matHeaderCellDef class="font-effect-3d-float">
+            Locked
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.locked }}
+          </mat-cell>
+        </ng-container>
+        <!-- Locked Column -->
+
+        <!-- Active Column -->
+        <ng-container *ngIf="isAccountAdmin" matColumnDef="active">
+          <mat-header-cell *matHeaderCellDef class="font-effect-3d-float">
+            Active
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.accountActive }}
+          </mat-cell>
+        </ng-container>
+        <!-- Active Column -->
+
+        <!-- Actions Column -->
+        <ng-container *ngIf="isAccountAdmin" matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef class="font-effect-3d-float" [style.min-width.px]="100">
+            Actions
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element" [style.min-width.px]="100">
+            <a class="action btn-edit" [routerLink]="element.memberLink" mat-raised-button color="accent">
+              <mat-icon>edit</mat-icon>
+              <span class="button-text">Edit</span>
+            </a>
+
+            <a *ngIf="isSysAdmin$ | async" class="action btn-impersonate" (click)="impersonate(element.user)"
+              mat-raised-button color="accent">
+              <mat-icon>person</mat-icon>
+              <span class="button-text">Impersonate</span>
+            </a>
+          </mat-cell>
+        </ng-container>
+        <!-- Actions Column -->
+
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      </mat-table>
+      <div *ngIf="users.length === 0" class="no-results">No members match search criteria.</div>
+      <mat-paginator [pageSize]="query.take" [pageSizeOptions]="[10, 20, 50, 100]" [length]="searchTotal"
+        (page)="pageSubject.next($event)" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+
+  </div>
+</psl-container>

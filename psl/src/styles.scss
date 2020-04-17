@@ -1,0 +1,108 @@
+@import 'theme';
+@import 'common';
+
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: block;
+  height: 100%;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.info-fab {
+  color: $primary-color;
+  font-size: 20px;
+}
+
+.error-message {
+  color: red;
+}
+
+.btn-close.mat-raised-button {
+  background-color: red;
+  color: #fff;
+}
+
+.btn-save.mat-raised-button {
+  background-color: green;
+  color: #fff;
+}
+
+mat-dialog-container {
+  height: 600px !important;
+  max-width: 100% !important;
+}
+
+.mat-menu-panel.apps {
+  width: 450px;
+  max-width: unset;
+  height: 450px;
+  max-width: unset;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+
+  button.mat-menu-item {
+    //@include light-accent-gradient();
+    height: 150px;
+    width: 150px;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    mat-icon {
+      font-size: 48px;
+      color: mat-color($primary-palette, 500);
+    }
+
+    .label {
+      font-size: 24px;
+      line-height: 24px;
+      color: mat-color($primary-palette, 500);
+      word-wrap: break-word;
+      width: 150px;
+      text-align: center;
+      white-space: normal;
+      height: 48px;
+      margin-top: 12px;
+    }
+  }
+
+  button.mat-menu-item:nth-of-type(even) {
+    //@include light-primary-gradient();
+
+    mat-icon {
+      font-size: 48px;
+      color: mat-color($accent-palette, 500);
+    }
+
+    .label {
+      color: mat-color($accent-palette, 500);
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1366px) {
+  mat-dialog-container {
+    height: 100% !important;
+    width: 100% !important;
+  }
+}

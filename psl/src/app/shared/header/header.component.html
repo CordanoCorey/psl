@@ -1,0 +1,54 @@
+<mat-toolbar class="header">
+  <img class="logo" src="assets/logo.gif">
+  <div class="icons">
+    <button class="header-icon home-icon" mat-button aria-label="Home link" routerLink="/dashboard">
+      <mat-icon>home</mat-icon>
+    </button>
+    <button class="header-icon apps-icon" mat-button [matMenuTriggerFor]="appsMenu" aria-label="Apps menu">
+      <mat-icon>apps</mat-icon>
+    </button>
+    <button class="header-icon more-icon" mat-button [matMenuTriggerFor]="moreMenu" aria-label="More menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+  <mat-menu class="apps" #appsMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span class="label">Accounts</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>voicemail</mat-icon>
+      <span class="label">Users</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span class="label">Reports</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span class="label">Routings</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>voicemail</mat-icon>
+      <span class="label">Products</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span class="label">Carriers</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span class="label">Dealers</span>
+    </button>
+  </mat-menu>
+  <mat-menu #moreMenu="matMenu">
+    <div mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>Corey Gelbaugh</span>
+    </div>
+    <button mat-menu-item>
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
