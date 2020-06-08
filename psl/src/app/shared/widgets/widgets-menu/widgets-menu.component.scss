@@ -1,0 +1,37 @@
+@import '~@angular/material/_theming';
+@import '../../../../common';
+
+.widgets-menu {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  background: mat-color($primary-palette, 700);
+  position: relative;
+  height: 60px;
+  display: flex;
+  align-items: center;
+
+  .hint {
+    color: $accent-color;
+    margin: 0 20px;
+  }
+
+  .btn-widget {
+    //@include accent-gradient();
+    margin: 5px 10px;
+    color: #fff;
+    position: relative;
+
+    .btn-remove {
+      position: absolute;
+      top: 2px;
+      right: 10px;
+      color: $accent-color;
+      font-size: 30px;
+      cursor: pointer;
+    }
+  }
+
+  .btn-widget.disabled {
+    padding-right: 40px;
+  }
+}

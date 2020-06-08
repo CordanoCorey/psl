@@ -1,0 +1,117 @@
+<div class="grid">
+  <mat-table [dataSource]="routings" class="scrollable" matSort (matSortChange)="onSort($event)">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header (click)="onSort('Id')">
+        ID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.id }}
+      </mat-cell>
+    </ng-container>
+    <!-- ID Column -->
+
+    <!-- Carrier Column -->
+    <ng-container matColumnDef="carrierName">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header
+        (click)="onSort('CarrierName')">
+        Carrier
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.carrierName }}
+      </mat-cell>
+    </ng-container>
+    <!-- Carrier Column -->
+
+    <!-- Start Date Column -->
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header (click)="onSort('Id')">
+        Start
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.startDate | date:'shortDate' }}
+      </mat-cell>
+    </ng-container>
+    <!-- Start Date Column -->
+
+    <!-- Origin Name Column -->
+    <ng-container matColumnDef="originName">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header
+        (click)="onSort('OriginName')">
+        Origin
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.originName }}
+      </mat-cell>
+    </ng-container>
+    <!-- Origin Name Column -->
+
+    <!-- Origin City Column -->
+    <ng-container matColumnDef="originCity">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header
+        (click)="onSort('OriginCity')">
+        Origin City
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.originCity }}
+      </mat-cell>
+    </ng-container>
+    <!-- Origin City Column -->
+
+    <!-- Origin State Column -->
+    <ng-container matColumnDef="originState">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header
+        (click)="onSort('OriginState')">
+        Origin State
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.originStateName }}
+      </mat-cell>
+    </ng-container>
+    <!-- Origin State Column -->
+
+    <!-- Destination Name Column -->
+    <ng-container matColumnDef="destinationName">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header
+        (click)="onSort('DestinationName')">
+        Destination
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.destinationName }}
+      </mat-cell>
+    </ng-container>
+    <!-- Destination Name Column -->
+
+    <!-- Destination City Column -->
+    <ng-container matColumnDef="destinationCity">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header
+        (click)="onSort('DestinationCity')">
+        Destination City
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.destinationCity }}
+      </mat-cell>
+    </ng-container>
+    <!-- Destination City Column -->
+
+    <!-- Destination State Column -->
+    <ng-container matColumnDef="destinationState">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header
+        (click)="onSort('DestinationState')">
+        Destination State
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.destinationStateName }}
+      </mat-cell>
+    </ng-container>
+    <!-- Destination State Column -->
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+  </mat-table>
+  <div *ngIf="routings?.length === 0" class="no-results">No routings match search criteria.</div>
+  <mat-paginator [pageSize]="query.take" [pageSizeOptions]="[10, 20, 50, 100]" [length]="searchTotal"
+    (page)="pageSubject.next($event)" showFirstLastButtons>
+  </mat-paginator>
+</div>

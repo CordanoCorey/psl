@@ -15,7 +15,7 @@ import {
 import { ActionReducerMap } from '@ngrx/store';
 
 import { routingsReducer } from './routings/routings.reducer';
-import { currentUserReducer, usersReducer, accessGrantedReducer } from './shared/reducers';
+import { currentUserReducer, usersReducer, accessCodeReducer, widgetsReducer } from './shared/reducers';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class ReducersService {
 
   getReducers(): ActionReducerMap<any> {
     return {
-      accessGranted: accessGrantedReducer,
+      accessCode: accessCodeReducer,
       currentUser: currentUserReducer,
       config: configReducer,
       errors: errorsReducer,
@@ -38,6 +38,7 @@ export class ReducersService {
       route: routerReducer,
       sidenav: sidenavReducer,
       viewSettings: viewSettingsReducer,
+      widgets: widgetsReducer,
       window: windowReducer,
       users: usersReducer,
       routings: routingsReducer

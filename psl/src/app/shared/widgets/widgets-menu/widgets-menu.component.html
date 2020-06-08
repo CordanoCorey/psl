@@ -1,0 +1,7 @@
+<div class="widgets-menu">
+  <span class="hint">Add Widgets to Dashboard:</span>
+  <button class="btn-widget" mat-raised-button *ngFor="let w of widgets" [disabled]="w.id !== 0" color="accent"
+    (click)="add.emit(w.name)" [class.disabled]="w.id !== 0">{{ w.label }}
+    <mat-icon *ngIf="w.id !== 0" class="btn-remove" (click)="remove.emit(w.id)">cancel</mat-icon>
+  </button>
+</div>

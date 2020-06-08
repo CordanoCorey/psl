@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { CarriersRoutingModule } from './carriers-routing.module';
 import { CarriersComponent } from './carriers.component';
+import { SharedModule } from '../shared/shared.module';
+import { CarriersGridComponent } from './carriers-grid/carriers-grid.component';
 
 
 @NgModule({
-  declarations: [CarriersComponent],
+  declarations: [CarriersComponent, CarriersGridComponent],
   imports: [
-    CommonModule,
+    SharedModule,
     CarriersRoutingModule
   ]
 })

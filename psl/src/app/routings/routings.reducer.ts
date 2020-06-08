@@ -1,6 +1,7 @@
 import { Action, routeParamIdSelector } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Routings, Routing } from './routings.model';
 
@@ -19,6 +20,7 @@ export function routingsReducer(state: Routings = new Routings(), action: Action
   switch (action.type) {
 
     case RoutingsActions.GET:
+      console.dir(action.payload);
       return state.update(action.payload);
 
     default:
@@ -32,4 +34,10 @@ export function routingsSelector(store: Store<any>): Observable<Routings> {
 
 export function routingSelector(store: Store<any>): Observable<Routing> {
   return combineLatest(routingsSelector(store), routeParamIdSelector(store, 'routingId'), (routings, id) => routings.get(id));
+}
+
+export function routingsSearchSelector(store: Store<any>): Observable<Routing[]> {
+  return routingsSelector(store).pipe(
+    map(x => x.asArray)
+  );
 }

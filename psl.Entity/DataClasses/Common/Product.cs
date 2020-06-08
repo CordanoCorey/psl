@@ -19,5 +19,6 @@ namespace psl.Entity.DataClasses
 
         public virtual ApplicationUser CreatedBy { get; set; }
         public virtual ApplicationUser LastModifiedBy { get; set; }
+        public virtual ICollection<OrderProductXref> Orders { get; set; }
     }
 }

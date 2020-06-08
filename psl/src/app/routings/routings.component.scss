@@ -1,2 +1,13 @@
 @import '~@angular/material/_theming';
 @import '../../common';
+
+.wrapper {
+  width: 80%;
+  height: 100%;
+  padding: 10px 3%;
+
+  psl-routings-grid {
+    @include mat-elevation(4);
+    display: block;
+  }
+}

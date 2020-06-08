@@ -1,0 +1,5 @@
+<div class="wrapper">
+  <img class="map" src="assets/map3.jpg" #map>
+  <img class="overlay" *ngFor="let img of images" [src]="img.src" [style.height.px]="img.height" [style.top.%]="img.top"
+    [style.left.%]="img.left" [@rubberBand]>
+</div>

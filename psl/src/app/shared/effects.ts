@@ -14,7 +14,7 @@ export class CurrentUserEffects {
    */
   @Effect() onLogout: Observable<Action> = this.actions$.pipe(
     ofType(CurrentUserActions.LOGOUT, CurrentUserActions.SIGNUP),
-    map(action => RouterActions.navigate('/login'))
+    map(action => RouterActions.navigate('/login/7CB24B34B9D5CC5F'))
   );
 
   /**
@@ -30,7 +30,7 @@ export class CurrentUserEffects {
    */
   @Effect() onResetPassword: Observable<Action> = this.actions$.pipe(
     ofType(CurrentUserActions.RESET_PASSWORD),
-    map(action => RouterActions.navigate('/login'))
+    map(action => RouterActions.navigate('/login/7CB24B34B9D5CC5F'))
   );
 
   /**

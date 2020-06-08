@@ -1,8 +1,8 @@
-//using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -15,88 +15,89 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 
 namespace psl.API
 {
-  public partial class Startup
-  {
-    public static void ConfigureAuthServices(IConfiguration Configuration, IServiceCollection services)
+    public partial class Startup
     {
-      var secretKey = Configuration["Auth:SimpleJwt:Secret"];
-      var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
+        public static void ConfigureAuthServices(IConfiguration Configuration, IServiceCollection services)
+        {
+            var secretKey = Configuration["Auth:SimpleJwt:Secret"];
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
 
 
-      var tokenValidationParameters = new TokenValidationParameters
-      {
-        // The signing key must match!
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = signingKey,
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                // The signing key must match!
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = signingKey,
 
-        // Validate the JWT Issuer (iss) claim
-        ValidateIssuer = true,
-        ValidIssuer = Configuration["Auth:SimpleJwt:Issuer"],
+                // Validate the JWT Issuer (iss) claim
+                ValidateIssuer = true,
+                ValidIssuer = Configuration["Auth:SimpleJwt:Issuer"],
 
-        // Validate the JWT Audience (aud) claim
-        ValidateAudience = true,
-        ValidAudience = Configuration["Auth:SimpleJwt:Audience"],
+                // Validate the JWT Audience (aud) claim
+                ValidateAudience = true,
+                ValidAudience = Configuration["Auth:SimpleJwt:Audience"],
 
-        // Validate the token expiry
-        ValidateLifetime = true,
+                // Validate the token expiry
+                ValidateLifetime = true,
 
-        // If you want to allow a certain amount of clock drift, set that here:
-        ClockSkew = TimeSpan.Zero
-      };
-      //Auth
-      //services.AddAuthentication().AddJwtBearer(options =>
-      //{
-      //  options.IncludeErrorDetails = true;
-      //  options.TokenValidationParameters = tokenValidationParameters;
-      //  options.Events = new JwtBearerEvents
-      //  {
-      //    OnChallenge = context =>
-      //          {
-      //          context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-      //          return Task.FromResult(0);
-      //        },
-      //  };
-      //});
+                // If you want to allow a certain amount of clock drift, set that here:
+                ClockSkew = TimeSpan.Zero
+            };
+            //Auth
+            services.AddAuthentication().AddJwtBearer(options =>
+            {
+                options.IncludeErrorDetails = true;
+                options.TokenValidationParameters = tokenValidationParameters;
+                options.Events = new JwtBearerEvents
+                {
+                    OnChallenge = context =>
+                    {
+                        context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                        return Task.FromResult(0);
+                    },
+                };
+            });
 
-      services.AddDbContext<PSLContext>(options
+            services.AddDbContext<PSLContext>(options
           => options.UseSqlServer(Configuration.GetConnectionString("db")));
 
-      services.AddIdentity<ApplicationUser, ApplicationRole>(opts =>
-      {
-        opts.Password.RequireDigit = false;
-        opts.Password.RequiredLength = 8;
-        opts.Password.RequireNonAlphanumeric = false;
-        opts.Password.RequireUppercase = false;
-        opts.Password.RequireLowercase = false;
+            services.AddIdentity<ApplicationUser, ApplicationRole>(opts =>
+            {
+                opts.Password.RequireDigit = false;
+                opts.Password.RequiredLength = 8;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireLowercase = false;
 
-        opts.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
-        opts.Lockout.MaxFailedAccessAttempts = 30;
+                opts.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                opts.Lockout.MaxFailedAccessAttempts = 30;
 
-        opts.User.RequireUniqueEmail = true;
-      })
-          .AddEntityFrameworkStores<PSLContext>().AddDefaultTokenProviders();
+                opts.User.RequireUniqueEmail = true;
+            })
+                .AddEntityFrameworkStores<PSLContext>().AddDefaultTokenProviders();
+        }
+
+        public static void ConfigureAuth(IApplicationBuilder app, IHostEnvironment env, ILoggerFactory loggerFactory, IConfiguration config)
+        {
+
+            app.UseAuthentication();
+            // Add JWT generation endpoint:
+            var secretKey = config["Auth:SimpleJwt:Secret"];
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
+            var signCreds = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
+            var options = new TokenProviderOptions
+            {
+                Path = "/api/token",
+                Audience = config["Auth:SimpleJwt:Audience"],
+                Issuer = config["Auth:SimpleJwt:Issuer"],
+                SigningCredentials = signCreds,
+                Expiration = TimeSpan.FromDays(30)
+            };
+            app.UseSimpleTokenProvider(options);
+        }
     }
-
-    public static void ConfigureAuth(IApplicationBuilder app, IHostEnvironment env, ILoggerFactory loggerFactory, IConfiguration config)
-    {
-
-      app.UseAuthentication();
-      // Add JWT generation endpoint:
-      var secretKey = config["Auth:SimpleJwt:Secret"];
-      var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
-      var signCreds = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
-      //var options = new TokenProviderOptions
-      //{
-      //  Path = "/api/token",
-      //  Audience = config["Auth:SimpleJwt:Audience"],
-      //  Issuer = config["Auth:SimpleJwt:Issuer"],
-      //  SigningCredentials = signCreds,
-      //  Expiration = TimeSpan.FromDays(30)
-      //};
-      //app.UseSimpleTokenProvider(options);
-    }
-  }
 }

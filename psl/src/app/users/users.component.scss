@@ -2,9 +2,57 @@
 @import '../../common';
 
 .wrapper {
-  @include mat-elevation(4);
   width: 80%;
   height: 80%;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.3);
+  background: #fff;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    width: 96%;
+    padding: 0 2%;
+
+    a {
+      @include primary-gradient();
+      height: 40px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      mat-icon {
+        color: #000;
+      }
+    }
+  }
+
+  .grid {
+    @include mat-elevation(4);
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .mat-column-email {
+    min-width: 240px;
+  }
+
+  .action {
+    margin: 0 5px;
+
+    mat-icon {
+      color: #000;
+    }
+  }
+
+  .action.btn-edit {
+    @include accent-gradient();
+    color: #fff;
+  }
+
+  .action.btn-impersonate {
+    @include primary-gradient();
+    color: #fff;
+  }
 }

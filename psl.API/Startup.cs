@@ -7,6 +7,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using psl.API.Features.Accounts;
+using psl.API.Features.Carriers;
+using psl.API.Features.Dealers;
+using psl.API.Features.Orders;
+using psl.API.Features.Products;
+using psl.API.Features.Routings;
+using psl.API.Features.Users;
+using psl.API.Features.Widgets;
 using System;
 
 namespace psl.API
@@ -20,6 +28,14 @@ namespace psl.API
             //Set up AutoMapper
             _mapperConfiguration = new MapperConfiguration(config =>
             {
+                config.AddProfile(new AccountMapProfile());
+                config.AddProfile(new CarrierMapProfile());
+                config.AddProfile(new DealerMapProfile());
+                config.AddProfile(new OrderMapProfile());
+                config.AddProfile(new ProductMapProfile());
+                config.AddProfile(new RoutingMapProfile());
+                config.AddProfile(new UserMapProfile());
+                config.AddProfile(new WidgetMapProfile());
             });
 
             var builder = new ConfigurationBuilder()

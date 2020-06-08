@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="top">
       <h2>Users</h2>
-      <a class="btn-add" *ngIf="isAccountAdmin" mat-raised-button color="accent">
+      <a class="btn-add" *ngIf="isAccountAdmin" mat-raised-button routerLink="/users/0">
         <mat-icon>add</mat-icon>
         <span class="button-text">New User</span>
       </a>
@@ -43,7 +43,7 @@
             Email
           </mat-header-cell>
           <mat-cell *matCellDef="let element">
-            {{ element.emailAddress }}
+            {{ element.email }}
           </mat-cell>
         </ng-container>
         <!-- Email Column -->
@@ -54,7 +54,7 @@
             Title
           </mat-header-cell>
           <mat-cell *matCellDef="let element">
-            {{ element.userTitle }}
+            {{ element.userTitle || 'N/A' }}
           </mat-cell>
         </ng-container>
         <!-- Title Column -->
@@ -65,7 +65,7 @@
             Role
           </mat-header-cell>
           <mat-cell *matCellDef="let element">
-            {{ element.userRole }}
+            {{ element.userRole || 'N/A' }}
           </mat-cell>
         </ng-container>
         <!-- Role Column -->
@@ -76,7 +76,7 @@
             Locked
           </mat-header-cell>
           <mat-cell *matCellDef="let element">
-            {{ element.locked }}
+            {{ element.locked ? 'Yes' : 'No' }}
           </mat-cell>
         </ng-container>
         <!-- Locked Column -->
@@ -87,24 +87,24 @@
             Active
           </mat-header-cell>
           <mat-cell *matCellDef="let element">
-            {{ element.accountActive }}
+            {{ element.active ? 'Yes' : 'No' }}
           </mat-cell>
         </ng-container>
         <!-- Active Column -->
 
         <!-- Actions Column -->
         <ng-container *ngIf="isAccountAdmin" matColumnDef="actions">
-          <mat-header-cell *matHeaderCellDef class="font-effect-3d-float" [style.min-width.px]="100">
+          <mat-header-cell *matHeaderCellDef class="font-effect-3d-float" [style.min-width.px]="240">
             Actions
           </mat-header-cell>
-          <mat-cell *matCellDef="let element" [style.min-width.px]="100">
-            <a class="action btn-edit" [routerLink]="element.memberLink" mat-raised-button color="accent">
+          <mat-cell *matCellDef="let element" [style.min-width.px]="240">
+            <a class="action btn-edit" [routerLink]="'/users/' + element.id" mat-raised-button>
               <mat-icon>edit</mat-icon>
               <span class="button-text">Edit</span>
             </a>
 
-            <a *ngIf="isSysAdmin$ | async" class="action btn-impersonate" (click)="impersonate(element.user)"
-              mat-raised-button color="accent">
+            <a class="action btn-impersonate" *ngIf="isSysAdmin$ | async" class="action btn-impersonate"
+              (click)="impersonate(element.user)" mat-raised-button>
               <mat-icon>person</mat-icon>
               <span class="button-text">Impersonate</span>
             </a>

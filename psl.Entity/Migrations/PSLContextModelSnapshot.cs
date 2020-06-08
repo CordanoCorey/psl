@@ -421,6 +421,38 @@ namespace psl.Entity.Migrations
                     b.HasIndex("LastModifiedById");
 
                     b.ToTable("Carrier","Common");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Abbrevation = "Diamond",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Diamond"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Abbrevation = "Warren",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Warren"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Abbrevation = "ATS",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "ATS"
+                        });
                 });
 
             modelBuilder.Entity("psl.Entity.DataClasses.Dealer", b =>
@@ -454,6 +486,35 @@ namespace psl.Entity.Migrations
                     b.HasIndex("LastModifiedById");
 
                     b.ToTable("Dealer","Common");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Deer Country Farm and Lawn, Inc."
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Shoppa's Farm Supply, Inc."
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Campbell Tractor & Implement"
+                        });
                 });
 
             modelBuilder.Entity("psl.Entity.DataClasses.DealerLocationXref", b =>
@@ -476,6 +537,32 @@ namespace psl.Entity.Migrations
                     b.HasIndex("LocationId");
 
                     b.ToTable("DealerLocation_xref","Common");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DealerId = 1,
+                            LocationId = 11
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DealerId = 1,
+                            LocationId = 12
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DealerId = 1,
+                            LocationId = 13
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DealerId = 1,
+                            LocationId = 14
+                        });
                 });
 
             modelBuilder.Entity("psl.Entity.DataClasses.Location", b =>
@@ -527,9 +614,207 @@ namespace psl.Entity.Migrations
                             CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastModifiedById = 1,
                             LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Carlisle PA",
+                            Name = "Carlisle, PA Main Office",
+                            StateId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            City = "Dundalk",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Baltimore, MD",
+                            StateId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            City = "Kernersville",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Kernersville, NC",
+                            StateId = 4
+                        },
+                        new
+                        {
+                            Id = 4,
+                            City = "Dubuque",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Dubuque, IA",
+                            StateId = 6
+                        },
+                        new
+                        {
+                            Id = 5,
+                            City = "Waterloo",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Waterloo, IA",
+                            StateId = 6
+                        },
+                        new
+                        {
+                            Id = 6,
+                            City = "Ottumwa",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Ottumwa, IA",
+                            StateId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            City = "E. Moline",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Harvester, IA",
+                            StateId = 5
+                        },
+                        new
+                        {
+                            Id = 8,
+                            City = "Bettendorf",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Bettendorf, IA",
+                            StateId = 6
+                        },
+                        new
+                        {
+                            Id = 9,
+                            City = "Davenport",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Davenport, IA",
+                            StateId = 6
+                        },
+                        new
+                        {
+                            Id = 10,
+                            City = "Moline",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Deere & Company World Headquarters",
+                            StateId = 5
+                        },
+                        new
+                        {
+                            Id = 11,
+                            City = "Lancaster",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Deer Country Farm and Lawn, Inc. Lancaster Location",
+                            StateId = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            City = "Adamstown",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Deer Country Farm and Lawn, Inc. Adamstown Location",
+                            StateId = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            City = "Lebanon",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Deer Country Farm and Lawn, Inc. Lebanon Location",
+                            StateId = 1
+                        },
+                        new
+                        {
+                            Id = 14,
+                            City = "Allentown",
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Deer Country Farm and Lawn, Inc. Allentown Location",
                             StateId = 1
                         });
+                });
+
+            modelBuilder.Entity("psl.Entity.DataClasses.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LastModifiedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("LastModifiedById");
+
+                    b.ToTable("Order","Common");
+                });
+
+            modelBuilder.Entity("psl.Entity.DataClasses.OrderProductXref", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OrderProductXrefId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("OrderProductXrefId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderProduct_xref","Common");
                 });
 
             modelBuilder.Entity("psl.Entity.DataClasses.Product", b =>
@@ -563,6 +848,197 @@ namespace psl.Entity.Migrations
                     b.HasIndex("LastModifiedById");
 
                     b.ToTable("Product","Common");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Compact 1 Series"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Compact 2 Series"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Compact 3 Series"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Compact 4 Series"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Utility 5E Series"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Utility 5M Series"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Utility 5R Series"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Utility 6E Series"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Utility 6M Series"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Utility 6R Series"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "5075GL"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "5090EL"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "5100ML"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "5115ML"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "5125ML"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Row Crop 6 Series"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Row Crop 7 Series"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Row Crop 8 Series"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "4WD 80 Inch"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "4WD 88 Inch"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "4WD 120 Inch"
+                        });
                 });
 
             modelBuilder.Entity("psl.Entity.DataClasses.Routing", b =>
@@ -612,6 +1088,20 @@ namespace psl.Entity.Migrations
                     b.HasIndex("OriginId");
 
                     b.ToTable("Routing","Common");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CarrierId = 1,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DestinationId = 2,
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OriginId = 1,
+                            StartTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("psl.Entity.DataClasses.State", b =>
@@ -655,7 +1145,84 @@ namespace psl.Entity.Migrations
                             Label = "California",
                             Name = "CA",
                             Sort = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsActive = true,
+                            Label = "Maryland",
+                            Name = "MD",
+                            Sort = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsActive = true,
+                            Label = "North Carolina",
+                            Name = "NC",
+                            Sort = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsActive = true,
+                            Label = "Illinois",
+                            Name = "IL",
+                            Sort = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            IsActive = true,
+                            Label = "Iowa",
+                            Name = "IA",
+                            Sort = 6
                         });
+                });
+
+            modelBuilder.Entity("psl.Entity.DataClasses.Widget", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double?>("Height")
+                        .HasColumnType("float");
+
+                    b.Property<string>("JustifyX")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("JustifyY")
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<double?>("OffsetX")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("OffsetY")
+                        .HasColumnType("float");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("Width")
+                        .HasColumnType("float");
+
+                    b.Property<double>("ZIndex")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Widget","Common");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -815,6 +1382,44 @@ namespace psl.Entity.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("psl.Entity.DataClasses.Order", b =>
+                {
+                    b.HasOne("psl.Entity.DataClasses.ApplicationUser", "CreatedBy")
+                        .WithMany("OrderCreatedBy")
+                        .HasForeignKey("CreatedById")
+                        .HasConstraintName("FK_Order_CreatedByUser")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("psl.Entity.DataClasses.ApplicationUser", "LastModifiedBy")
+                        .WithMany("OrderLastModifiedBy")
+                        .HasForeignKey("LastModifiedById")
+                        .HasConstraintName("FK_Order_LastModifiedByUser")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("psl.Entity.DataClasses.OrderProductXref", b =>
+                {
+                    b.HasOne("psl.Entity.DataClasses.Order", "Order")
+                        .WithMany("Products")
+                        .HasForeignKey("OrderId")
+                        .HasConstraintName("FK_OrderProduct_xref_Order")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("psl.Entity.DataClasses.OrderProductXref", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("OrderProductXrefId");
+
+                    b.HasOne("psl.Entity.DataClasses.Product", "Product")
+                        .WithMany("Orders")
+                        .HasForeignKey("ProductId")
+                        .HasConstraintName("FK_OrderProduct_xref_Product")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("psl.Entity.DataClasses.Product", b =>
                 {
                     b.HasOne("psl.Entity.DataClasses.ApplicationUser", "CreatedBy")
@@ -866,6 +1471,16 @@ namespace psl.Entity.Migrations
                         .WithMany("OriginRoutings")
                         .HasForeignKey("OriginId")
                         .HasConstraintName("FK_Routing_OriginLocation")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("psl.Entity.DataClasses.Widget", b =>
+                {
+                    b.HasOne("psl.Entity.DataClasses.ApplicationUser", "User")
+                        .WithMany("Widgets")
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK_Widget_User")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

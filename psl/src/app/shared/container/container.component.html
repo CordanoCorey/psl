@@ -1,15 +1,16 @@
 <div id="container" [style.height.px]="windowHeight" [style.width.px]="windowWidth">
   <div class="sidenav-container scrollable" [style.min-height.px]="windowHeight" [style.width.px]="sidenavWidth"
     [@sidenavState]="sidenavOpened ? 'open' : 'closed'">
-    <mat-icon *ngIf="sidenavOpened" class="toggle-menu" (click)="toggleSidenav()">close
-    </mat-icon>
+    <psl-sidenav></psl-sidenav>
   </div>
+  <mat-icon *ngIf="sidenavOpened" class="toggle-menu" (click)="toggleSidenav()">close
+  </mat-icon>
   <mat-icon *ngIf="!sidenavOpened" class="toggle-menu" (click)="toggleSidenav()">menu
   </mat-icon>
   <psl-header></psl-header>
-  <div id="content" class="scrollable parallax" [@contentState]="sidenavOpened ? 'open' : 'closed'" fxLayout="column"
-    fxLayoutGap="16px" [style.left.px]="sidenavWidth" [style.width.px]="windowWidth - sidenavWidth"
-    [style.top.px]="104">
+  <div id="content" class="scrollable-window parallax" [@contentState]="sidenavOpened ? 'open' : 'closed'"
+    fxLayout="column" fxLayoutGap="16px" [style.left.px]="sidenavWidth" [style.width.px]="windowWidth - sidenavWidth"
+    [style.top.px]="84">
     <ng-content></ng-content>
   </div>
 </div>

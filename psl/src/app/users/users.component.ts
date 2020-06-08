@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
-import { SmartComponent, Control } from '@caiu/library';
+import { SmartComponent, Control, HttpActions } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 import { User, UsersQuery } from '../shared/models';
 import { allUsersSelector, isSysAdminSelector } from '../shared/selectors';
+import { UsersActions } from '../shared/actions';
 
 @Component({
   selector: 'psl-users',
@@ -47,6 +48,12 @@ export class UsersComponent extends SmartComponent implements OnInit {
 
   ngOnInit(): void {
     this.sync(['users']);
+    this.getUsers();
+    this.users$.subscribe(x => { console.dir(x); });
+  }
+
+  getUsers() {
+    this.dispatch(HttpActions.get(`users`, UsersActions.GET));
   }
 
   impersonate(e) {

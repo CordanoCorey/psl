@@ -35,7 +35,7 @@ namespace psl.API.Infrastructure.Authentication
         /// <summary>
         /// The signing key to use when generating tokens.
         /// </summary>
-        //public SigningCredentials SigningCredentials { get; set; }
+        public SigningCredentials SigningCredentials { get; set; }
 
         /// <summary>
         /// Resolves a user identity given a username and password.

@@ -24,9 +24,12 @@ namespace psl.Entity.DataClasses
         public virtual ICollection<Dealer> DealerLastModifiedBy { get; set; }
         public virtual ICollection<Location> LocationCreatedBy { get; set; }
         public virtual ICollection<Location> LocationLastModifiedBy { get; set; }
+        public virtual ICollection<Order> OrderCreatedBy { get; set; }
+        public virtual ICollection<Order> OrderLastModifiedBy { get; set; }
         public virtual ICollection<Product> ProductCreatedBy { get; set; }
         public virtual ICollection<Product> ProductLastModifiedBy { get; set; }
         public virtual ICollection<Routing> RoutingCreatedBy { get; set; }
         public virtual ICollection<Routing> RoutingLastModifiedBy { get; set; }
+        public virtual ICollection<Widget> Widgets { get; set; }
     }
 }

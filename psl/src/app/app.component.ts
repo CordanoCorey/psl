@@ -27,20 +27,22 @@ import {
 } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-
-import { CurrentUserActions, UsersActions, AccessGrantedActions } from './shared/actions';
+import { CurrentUserActions, UsersActions, AccessCodeActions, WidgetsActions } from './shared/actions';
 import { CurrentUser } from './shared/models';
+
 import { currentUserIdSelector } from './shared/selectors';
+import { WIDGETS } from './shared/lookup';
 import { environment } from '../environments/environment';
 
-var ACCESS_CODE = '';
+var ACCESS_CODE = '7CB24B34B9D5CC5F';
 
 @Component({
   selector: 'psl-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
-})
-export class AppComponent extends SmartComponent implements OnInit {
+}
+
+) export class AppComponent extends SmartComponent implements OnInit {
   contestantId = 0;
   contestantId$: Observable<number>;
   errorMessage$: Observable<string>;
@@ -68,8 +70,7 @@ export class AppComponent extends SmartComponent implements OnInit {
     private route: ActivatedRoute,
     public lookup: LookupService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog
-  ) {
+    public dialog: MatDialog) {
     super(store);
     // To avoid XSS attacks, the URL needs to be trusted from inside of your application.
     const avatarsSafeUrl = sanitizer.bypassSecurityTrustResourceUrl('./assets/avatars.svg');
@@ -86,17 +87,22 @@ export class AppComponent extends SmartComponent implements OnInit {
   get errorMessageChanges(): Subscription {
     return this.errorMessage$.subscribe(x => {
       this.showErrorMessage(x);
-    });
+    }
+
+    );
   }
 
   get localStorageActions(): string[] {
-    return [...CurrentUserActions.ALL];
+    return [...CurrentUserActions.ALL, AccessCodeActions.SET];
   }
 
   get localStorageMapper(): (s: any) => any {
     return state => {
       const currentUser = build(CurrentUser, state ? state.currentUser : {});
-      return { currentUser };
+      return {
+        accessCode: state ? state.accessCode : '',
+        currentUser
+      };
     };
   }
 
@@ -105,7 +111,12 @@ export class AppComponent extends SmartComponent implements OnInit {
   }
 
   get lookupValues(): Lookup[] {
-    return [];
+    return [
+      build(Lookup, {
+        typeName: 'lkpWidgets',
+        values: WIDGETS
+      })
+    ];
   }
 
   get sessionStorageActions(): string[] {
@@ -113,19 +124,24 @@ export class AppComponent extends SmartComponent implements OnInit {
   }
 
   get sessionStorageMapper(): (s: any) => any {
-    return state => { };
+    return state => { }
+
+      ;
   }
 
   get toastChanges(): Subscription {
     return this.toast$.subscribe(x => {
       this.openSnackBar(x);
-    });
+    }
+
+    );
   }
 
   set userId(value: number) {
     if (value !== 0) {
       this.loadUserData();
     }
+
     this._userId = value;
   }
 
@@ -146,17 +162,20 @@ export class AppComponent extends SmartComponent implements OnInit {
     this.sync(['lastActive', 'loggedIn', 'userId', 'urlPath']);
     this.addSubscription(this.toastChanges);
     this.addSubscription(this.errorMessageChanges);
+
     this.addSubscription(this.routeName$.subscribe(x => {
       this.routeName = x;
+
       if (x === 'dashboard') {
-        this.openSidenav();
-      } else {
-        this.closeSidenav();
+        // this.openSidenav();
       }
-    }));
-    this.addSubscription(routeParamSelector(this.store, 'access_code').subscribe(code => {
-      this.dispatch(AccessGrantedActions.setValue(code === ACCESS_CODE));
-    }));
+
+      else {
+        // this.closeSidenav();
+      }
+    }
+
+    ));
   }
 
   autoLogout() {
@@ -172,6 +191,7 @@ export class AppComponent extends SmartComponent implements OnInit {
     if (this.contestantId) {
       this.dispatch(RouterActions.navigate(`/${this.urlPath}`));
     }
+
     // if (this.loggingOut) {
     //   if (result) {
     //     this.logout();
@@ -205,8 +225,12 @@ export class AppComponent extends SmartComponent implements OnInit {
     this.storage.init(this.localStorageMapper, this.sessionStorageMapper, this.localStorageActions, this.sessionStorageActions);
   }
 
+  getWidgets() {
+    this.dispatch(HttpActions.get(`widgets`, WidgetsActions.GET));
+  }
+
   loadUserData() {
-    // this.getUsers();
+    this.getWidgets();
   }
 
   logout() {
@@ -216,7 +240,9 @@ export class AppComponent extends SmartComponent implements OnInit {
   openSnackBar(message: string) {
     this.snackBar.open(message, 'Close', {
       duration: 3000
-    });
+    }
+
+    );
   }
 
   showErrorMessage(message: string) {
@@ -224,36 +250,48 @@ export class AppComponent extends SmartComponent implements OnInit {
       duration: 5000,
       verticalPosition: 'top',
       panelClass: 'snackbar-error'
-    });
+    }
+
+    );
   }
 
-  @HostListener('window:mousemove')
-  resetTimer() {
+  @HostListener('window:mousemove') resetTimer() {
     // clearTimeout(this.time);
     // this.time = setTimeout(() => {
     //   this.autoLogout();
     // }, 1800000); // logout after 30 minutes
   }
 
-  @HostListener('window:load', ['$event'])
-  onLoad(e: any) {
+  @HostListener('window:load', ['$event']) onLoad(e: any) {
     const windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
     const windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
-    this.dispatch(WindowActions.resize(build(WindowResize, { windowHeight, windowWidth })));
+
+    this.dispatch(WindowActions.resize(build(WindowResize, {
+      windowHeight, windowWidth
+    }
+
+    )));
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(e: any) {
+  @HostListener('window:resize', ['$event']) onResize(e: any) {
     const windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
     const windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
-    console.log(windowHeight, windowWidth);
-    this.dispatch(WindowActions.resize(build(WindowResize, { windowHeight, windowWidth })));
+
+    this.dispatch(WindowActions.resize(build(WindowResize, {
+      windowHeight, windowWidth
+    }
+
+    )));
   }
 
-  @HostListener('window:orientationchange', ['$event'])
-  onOrientationChange(e: any) {
+  @HostListener('window:orientationchange', ['$event']) onOrientationChange(e: any) {
     const windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
     const windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
-    this.dispatch(WindowActions.resize(build(WindowResize, { windowHeight, windowWidth })));
+
+    this.dispatch(WindowActions.resize(build(WindowResize, {
+      windowHeight, windowWidth
+    }
+
+    )));
   }
 }

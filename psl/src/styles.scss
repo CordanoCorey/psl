@@ -100,6 +100,20 @@ mat-dialog-container {
   }
 }
 
+.group {
+  .mat-form-field {
+    label {
+      color: mat-color($primary-palette, 900);
+    }
+  }
+}
+
+.mat-cell,
+.mat-header-cell {
+  justify-content: center;
+  text-align: center;
+}
+
 @media only screen and (max-device-width: 1366px) {
   mat-dialog-container {
     height: 100% !important;

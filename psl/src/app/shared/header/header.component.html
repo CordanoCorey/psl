@@ -1,5 +1,5 @@
 <mat-toolbar class="header">
-  <img class="logo" src="assets/logo.gif">
+  <!-- <img class="logo" src="assets/logo.gif"> -->
   <div class="icons">
     <button class="header-icon home-icon" mat-button aria-label="Home link" routerLink="/dashboard">
       <mat-icon>home</mat-icon>
@@ -7,46 +7,57 @@
     <button class="header-icon apps-icon" mat-button [matMenuTriggerFor]="appsMenu" aria-label="Apps menu">
       <mat-icon>apps</mat-icon>
     </button>
+    <button class="header-icon apps-icon" mat-button aria-label="Edit Form">
+      <mat-icon>edit</mat-icon>
+    </button>
     <button class="header-icon more-icon" mat-button [matMenuTriggerFor]="moreMenu" aria-label="More menu">
       <mat-icon>more_vert</mat-icon>
     </button>
   </div>
   <mat-menu class="apps" #appsMenu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>dialpad</mat-icon>
-      <span class="label">Accounts</span>
+    <button mat-menu-item routerLink="/routings">
+      <mat-icon class="font-effect-emboss">navigation</mat-icon>
+      <span class="label font-effect-emboss">Routings</span>
     </button>
-    <button mat-menu-item>
-      <mat-icon>voicemail</mat-icon>
-      <span class="label">Users</span>
+    <button mat-menu-item routerLink="/carriers">
+      <mat-icon class="font-effect-emboss">local_shipping</mat-icon>
+      <span class="label font-effect-emboss">Carriers</span>
     </button>
-    <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span class="label">Reports</span>
+    <button mat-menu-item routerLink="/products">
+      <mat-icon class="font-effect-emboss">storefront</mat-icon>
+      <span class="label font-effect-emboss">Products</span>
     </button>
-    <button mat-menu-item>
-      <mat-icon>dialpad</mat-icon>
-      <span class="label">Routings</span>
+    <button mat-menu-item routerLink="/dealers">
+      <mat-icon class="font-effect-emboss">pin_drop</mat-icon>
+      <span class="label font-effect-emboss">Dealers</span>
     </button>
-    <button mat-menu-item>
-      <mat-icon>voicemail</mat-icon>
-      <span class="label">Products</span>
+    <button mat-menu-item routerLink="/dealers">
+      <mat-icon class="font-effect-emboss">receipt_long</mat-icon>
+      <span class="label font-effect-emboss">Orders</span>
     </button>
-    <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span class="label">Carriers</span>
+    <button mat-menu-item routerLink="/processes">
+      <mat-icon class="font-effect-emboss">repeat</mat-icon>
+      <span class="label font-effect-emboss">Processes</span>
     </button>
-    <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span class="label">Dealers</span>
+    <button mat-menu-item routerLink="/accounts">
+      <mat-icon class="font-effect-emboss">recent_actors</mat-icon>
+      <span class="label font-effect-emboss">Accounts</span>
+    </button>
+    <button mat-menu-item routerLink="/users">
+      <mat-icon class="font-effect-emboss">people</mat-icon>
+      <span class="label font-effect-emboss">Users</span>
+    </button>
+    <button mat-menu-item routerLink="/reports">
+      <mat-icon class="font-effect-emboss">receipt</mat-icon>
+      <span class="label font-effect-emboss">Reports</span>
     </button>
   </mat-menu>
   <mat-menu #moreMenu="matMenu">
     <div mat-menu-item>
       <mat-icon>person</mat-icon>
-      <span>Corey Gelbaugh</span>
+      <span>Demo User</span>
     </div>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
       <span>Logout</span>
     </button>

@@ -1,0 +1,51 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.sidenav {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  .menu {
+    position: absolute;
+    top: 120px;
+    width: 100%;
+
+    .mat-menu-item {
+      @include dark-primary-gradient();
+      @include mat-elevation(4);
+      width: 100%;
+      height: 80px;
+      margin: 10px 0;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      .label {
+        color: #fff;
+      }
+
+      mat-icon {
+        color: $accent-color;
+        font-size: 36px;
+        height: 36px;
+        width: 36px;
+        margin: 0 30px 0 50px;
+      }
+    }
+
+    .mat-menu-item:hover {
+      @include light-accent-gradient-v();
+
+      .label {
+        color: #fff;
+        color: $primary-color;
+      }
+
+      mat-icon {
+        color: mat-color($primary-palette, 900);
+      }
+    }
+  }
+}

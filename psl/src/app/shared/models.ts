@@ -7,23 +7,39 @@ export class User {
   email = '';
   firstName = '';
   lastName = '';
-  order = 0;
-  paid = false;
-  pickToWinName = 'N/A';
-  place = '';
-  totalPoints = 0;
+  active = true;
+  locked = false;
+
+  get metadata(): Metadata {
+    return build(Metadata, {
+      ignore: [
+        'accessFailedCount',
+        'concurrencyStamp',
+        'createdById',
+        'createdByName',
+        'createdDate',
+        'emailConfirmed',
+        'lastModifiedById',
+        'lastModifiedByName',
+        'lastModifiedDate',
+        'lockoutEnabled',
+        'lockoutEnd',
+        'normalizedEmail',
+        'normalizedUserName',
+        'password',
+        'passwordHash',
+        'passwordResetCode',
+        'phoneNumber',
+        'phoneNumberConfirmed',
+        'securityStamp',
+        'twoFactorEnabled',
+        'userName'
+      ]
+    });
+  }
 }
 
 export class Users extends Collection<User> {
-
-  static AssignPlaces(data: User[]): User[] {
-    const groupedByPointTotal = data.reduce((acc, x) => Object.assign({}, acc, { [x.totalPoints]: [...toArray(acc[x.totalPoints]), x] }), {});
-    return Object.keys(groupedByPointTotal).sort((a, b) => compareNumbers(toInt(a), toInt(b))).reverse()
-      .map((pts, i) => groupedByPointTotal[pts].map(y => build(User, y, {
-        order: i + 1,
-        place: groupedByPointTotal[pts].length > 1 ? `T${i + 1}` : `${i + 1}`
-      }))).reduce((acc, x) => [...acc, ...x], []);
-  }
 
   usersLoaded = false;
 
@@ -48,6 +64,22 @@ export class CurrentUser extends BaseCurrentUser {
   }
 }
 
+export class Account {
+
+}
+
+export class Accounts extends Collection<Account> {
+  constructor() {
+    super(Account);
+  }
+}
+
+export interface Distance {
+  x: number;
+  y: number;
+  zIndex?: number;
+}
+
 export class Login {
   email = '';
   password = '';
@@ -63,4 +95,41 @@ export class Login {
 
 export class UsersQuery extends QueryModel<User> {
 
+}
+
+export class Widget {
+  id = 0;
+  name = '';
+  userId = 0;
+  height = 0;
+  heightPx = 0;
+  justifyX: 'LEFT' | 'RIGHT' | 'CENTER';
+  justifyY: 'TOP' | 'BOTTOM' | 'CENTER';
+  offsetX = 0;
+  label = '';
+  left = 0;
+  offsetY = 0;
+  top = 0;
+  width = 0;
+  widthPx = 0;
+  zIndex = 0;
+}
+
+export class Widgets extends Collection<Widget> {
+
+  constructor() {
+    super(Widget);
+  }
+
+  update(data: Widget | Widget[]): Widgets {
+    return build(Widgets, super.update(data));
+  }
+}
+
+export class ImageOverlay {
+  src = '';
+  top = 0;
+  left = 0;
+  height = 0;
+  width = 0;
 }

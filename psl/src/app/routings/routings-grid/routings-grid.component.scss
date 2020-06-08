@@ -1,0 +1,22 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+.grid {
+  .mat-header-cell {
+    text-align: center;
+  }
+
+  .mat-header-cell.mat-column-carrierName,
+  .mat-header-cell.mat-column-destinationName,
+  .mat-header-cell.mat-column-destinationCity,
+  .mat-header-cell.mat-column-destinationState,
+  .mat-header-cell.mat-column-originName,
+  .mat-header-cell.mat-column-originCity,
+  .mat-header-cell.mat-column-originState {
+    min-width: 72px;
+  }
+
+  .mat-column-id {
+    max-width: 48px;
+  }
+}

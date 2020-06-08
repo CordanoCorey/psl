@@ -1,0 +1,46 @@
+@import '~@angular/material/_theming';
+@import '../../common';
+
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper {
+  @include cover(url(/assets/bg20.jpg));
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .access-denied {
+    @include mat-elevation(8);
+    background: rgba(0, 0, 0, 0.6);
+    height: 500px;
+    width: 60%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    h1,
+    h2 {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 54px;
+      color: $accent-color;
+    }
+
+    h2 {
+      width: 70%;
+
+      a {
+        color: $accent-color;
+      }
+    }
+  }
+}

@@ -73,14 +73,30 @@ $accent-color: mat-color($accent-palette, 500);
   }
 
   .scrollable::-webkit-scrollbar {
-    width: 40px;
+    width: 20px;
     background-color: $background-color;
   }
 
   .scrollable::-webkit-scrollbar-thumb {
     background-color: $color;
-    border-radius: 40px;
-    @include primary-gradient();
+    border-radius: 20px;
+    @include silver-gradient();
+    z-index: 11;
+  }
+
+  .scrollable-window::-webkit-scrollbar-track {
+    background-color: $background-color;
+  }
+
+  .scrollable-window::-webkit-scrollbar {
+    width: 30px;
+    background-color: $background-color;
+  }
+
+  .scrollable-window::-webkit-scrollbar-thumb {
+    background-color: $color;
+    border-radius: 30px;
+    @include silver-gradient();
     z-index: 11;
   }
 }
@@ -94,6 +110,21 @@ $accent-color: mat-color($accent-palette, 500);
   background: -webkit-linear-gradient(left, mat-color($primary-palette, 700) 0%, mat-color($primary-palette, 600) 53%, mat-color($primary-palette, 500) 100%);
   /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to right, mat-color($primary-palette, 700) 0%, mat-color($primary-palette, 600) 53%, mat-color($primary-palette, 500) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#043A6A', endColorstr='#01111e', GradientType=0);
+  /* IE6-9 */
+
+}
+
+@mixin primary-gradient-v {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#022f45+0,08415c+53,175370+100 */
+  background: mat-color($primary-palette, 500);
+  /* Old browsers */
+  background: -moz-linear-gradient(bottom, mat-color($primary-palette, 700) 0%, mat-color($primary-palette, 600) 53%, mat-color($primary-palette, 500) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(bottom, mat-color($primary-palette, 700) 0%, mat-color($primary-palette, 600) 53%, mat-color($primary-palette, 500) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to top, mat-color($primary-palette, 700) 0%, mat-color($primary-palette, 600) 53%, mat-color($primary-palette, 500) 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#043A6A', endColorstr='#01111e', GradientType=0);
   /* IE6-9 */
@@ -114,7 +145,36 @@ $accent-color: mat-color($accent-palette, 500);
   /* IE6-9 */
 }
 
+@mixin dark-primary-gradient-v {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#022f45+0,08415c+53,175370+100 */
+  background: mat-color($primary-palette, 500);
+  /* Old browsers */
+  background: -moz-linear-gradient(top, mat-color($primary-palette, 900) 0%, mat-color($primary-palette, 800) 53%, mat-color($primary-palette, 700) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, mat-color($primary-palette, 900) 0%, mat-color($primary-palette, 800) 53%, mat-color($primary-palette, 700) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, mat-color($primary-palette, 900) 0%, mat-color($primary-palette, 800) 53%, mat-color($primary-palette, 700) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#043A6A', endColorstr='#01111e', GradientType=0);
+  /* IE6-9 */
+}
+
 @mixin light-primary-gradient {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#022f45+0,08415c+53,175370+100 */
+  background: mat-color($primary-palette, 500);
+  /* Old browsers */
+  background: -moz-linear-gradient(left, mat-color($primary-palette, 100) 0%, mat-color($primary-palette, 300) 53%, mat-color($primary-palette, 500) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, mat-color($primary-palette, 100) 0%, mat-color($primary-palette, 300) 53%, mat-color($primary-palette, 500) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, mat-color($primary-palette, 100) 0%, mat-color($primary-palette, 300) 53%, mat-color($primary-palette, 500) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#043A6A', endColorstr='#01111e', GradientType=0);
+  /* IE6-9 */
+
+}
+
+@mixin light-primary-gradient-v {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#022f45+0,08415c+53,175370+100 */
   background: mat-color($primary-palette, 500);
   /* Old browsers */
@@ -159,6 +219,21 @@ $accent-color: mat-color($accent-palette, 500);
 }
 
 @mixin light-accent-gradient {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#022f45+0,08415c+53,175370+100 */
+  background: mat-color($accent-palette, 500);
+  /* Old browsers */
+  background: -moz-linear-gradient(right, mat-color($accent-palette, 100) 0%, mat-color($accent-palette, 300) 53%, mat-color($accent-palette, 500) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(right, mat-color($accent-palette, 100) 0%, mat-color($accent-palette, 300) 53%, mat-color($accent-palette, 500) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to left, mat-color($accent-palette, 100) 0%, mat-color($accent-palette, 300) 53%, mat-color($accent-palette, 500) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#043A6A', endColorstr='#01111e', GradientType=0);
+  /* IE6-9 */
+
+}
+
+@mixin light-accent-gradient-v {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#022f45+0,08415c+53,175370+100 */
   background: mat-color($accent-palette, 500);
   /* Old browsers */

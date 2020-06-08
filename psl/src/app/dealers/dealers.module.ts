@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { DealersRoutingModule } from './dealers-routing.module';
 import { DealersComponent } from './dealers.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [DealersComponent],
   imports: [
-    CommonModule,
+    SharedModule,
     DealersRoutingModule
   ]
 })

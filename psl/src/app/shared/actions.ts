@@ -37,13 +37,21 @@ export class UsersActions {
   static GET = '[Users] GET';
 }
 
-export class AccessGrantedActions {
-  static SET = '[AccessGranted] SET';
+export class AccessCodeActions {
+  static SET = '[AccessCode] SET';
 
-  static setValue(payload: boolean): Action {
+  static setValue(payload: string): Action {
     return {
-      type: AccessGrantedActions.SET,
+      type: AccessCodeActions.SET,
       payload
     };
   }
+}
+
+export class WidgetsActions {
+  static DELETE = '[Widgets] DELETE';
+  static GET = '[Widgets] GET';
+  static POST = '[Widgets] POST';
+  static POST_ERROR = '[Widgets] POST ERROR';
+  static PUT = '[Widgets] PUT';
 }

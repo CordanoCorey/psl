@@ -35,7 +35,11 @@ namespace psl.Entity.Context
 
                 entity.HasData(
                   new DataClasses.State { Id = 1, Name = "PA", Label = "Pennsylvania", Sort = 1, IsActive = true },
-                  new DataClasses.State { Id = 2, Name = "CA", Label = "California", Sort = 2, IsActive = true }
+                  new DataClasses.State { Id = 2, Name = "CA", Label = "California", Sort = 2, IsActive = true },
+                  new DataClasses.State { Id = 3, Name = "MD", Label = "Maryland", Sort = 3, IsActive = true },
+                  new DataClasses.State { Id = 4, Name = "NC", Label = "North Carolina", Sort = 4, IsActive = true },
+                  new DataClasses.State { Id = 5, Name = "IL", Label = "Illinois", Sort = 5, IsActive = true },
+                  new DataClasses.State { Id = 6, Name = "IA", Label = "Iowa", Sort = 6, IsActive = true }
                 );
             });
         }

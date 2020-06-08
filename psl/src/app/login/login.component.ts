@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { SmartComponent, Control, ErrorOutlet, ErrorActions, HttpActions, EventsService, MessageSubscription, build, HttpService } from '@caiu/library';
+import { SmartComponent, Control, ErrorOutlet, ErrorActions, HttpActions, EventsService, MessageSubscription, build, HttpService, routeParamSelector, RouterActions, truthy } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, take, filter } from 'rxjs/operators';
 
 import { Login } from '../shared/models';
-import { CurrentUserActions } from '../shared/actions';
+import { CurrentUserActions, AccessCodeActions } from '../shared/actions';
 
 @Component({
   selector: 'psl-login',
@@ -15,6 +15,8 @@ import { CurrentUserActions } from '../shared/actions';
 })
 export class LoginComponent extends SmartComponent implements OnInit, OnDestroy {
   @Control(Login) form: FormGroup;
+  _accessCode = '';
+  accessCode$: Observable<string>;
   errorMessage = '';
   successMessage = '';
   routeName = 'login';
@@ -54,6 +56,17 @@ export class LoginComponent extends SmartComponent implements OnInit, OnDestroy 
 
   ngOnInit() {
     this.onInit();
+    routeParamSelector(this.store, 'accessCode').pipe(
+      // filter(x => truthy(x) && x !== 'undefined'),
+      take(1)
+    )
+      .subscribe(code => {
+        if (code !== '7CB24B34B9D5CC5F') {
+          this.dispatch(RouterActions.navigate('/access-denied'));
+        } else {
+          this.dispatch(AccessCodeActions.setValue(code));
+        }
+      });
   }
 
   ngOnDestroy() {

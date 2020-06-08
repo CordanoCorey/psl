@@ -20,6 +20,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { FormsModule, AccordionModule, DialogModule, PipesModule } from '@caiu/library';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ContainerComponent } from './container/container.component';
 import { HeaderComponent } from './header/header.component';
@@ -51,6 +52,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     MatSnackBarModule,
     MatTableModule,
     MatTabsModule,
+    NgxChartsModule,
     PipesModule,
     RouterModule
   ],
@@ -82,6 +84,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     MatSnackBarModule,
     MatTableModule,
     MatTabsModule,
+    NgxChartsModule,
     PipesModule,
     RouterModule,
     ContainerComponent

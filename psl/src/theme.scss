@@ -26,4 +26,4 @@ $theme: mat-light-theme($primary, $accent);
   $light-theme: mat-dark-theme($light-primary, $light-accent);
 }
 
-@include scrollable(#fff, $primary-color);
+@include scrollable(#fff, #fff);

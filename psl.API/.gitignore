@@ -1,0 +1,15 @@
+bin/dev/netcoreapp3.1/psl.API.deps.json
+bin/dev/netcoreapp3.1/psl.API.dll
+bin/dev/netcoreapp3.1/psl.API.pdb
+bin/dev/netcoreapp3.1/psl.Entity.dll
+bin/dev/netcoreapp3.1/psl.Entity.pdb
+obj/project.assets.json
+obj/psl.API.csproj.nuget.cache
+obj/psl.API.csproj.nuget.dgspec.json
+obj/Debug/netcoreapp3.1/psl.API.assets.cache
+obj/Debug/netcoreapp3.1/psl.API.csprojAssemblyReference.cache
+obj/dev/netcoreapp3.1/psl.API.assets.cache
+obj/dev/netcoreapp3.1/psl.API.csproj.FileListAbsolute.txt
+obj/dev/netcoreapp3.1/psl.API.csprojAssemblyReference.cache
+obj/dev/netcoreapp3.1/psl.API.dll
+obj/dev/netcoreapp3.1/psl.API.pdb
