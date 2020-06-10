@@ -3,6 +3,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -25,18 +26,22 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ContainerComponent } from './container/container.component';
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { ComingSoonModule } from './coming-soon/coming-soon.module';
+import { TimeframeControlComponent } from './timeframe-control/timeframe-control.component';
 
 @NgModule({
-  declarations: [ContainerComponent, HeaderComponent, SidenavComponent],
+  declarations: [ContainerComponent, HeaderComponent, SidenavComponent, TimeframeControlComponent],
   imports: [
     CommonModule,
     AccordionModule,
+    ComingSoonModule,
     DialogModule,
     DragDropModule,
     RouterModule,
     FlexLayoutModule,
     FormsModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
     MatFormFieldModule,
@@ -59,12 +64,14 @@ import { SidenavComponent } from './sidenav/sidenav.component';
   exports: [
     CommonModule,
     AccordionModule,
+    ComingSoonModule,
     DialogModule,
     DragDropModule,
     RouterModule,
     FlexLayoutModule,
     FormsModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
     MatFormFieldModule,
@@ -87,6 +94,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     NgxChartsModule,
     PipesModule,
     RouterModule,
+    TimeframeControlComponent,
     ContainerComponent
   ]
 })

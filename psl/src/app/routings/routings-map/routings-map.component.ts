@@ -81,7 +81,6 @@ export class RoutingsMapComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.dir(this.mapEl.nativeElement);
     this.mapHeight = this.mapEl.nativeElement.clientHeight;
     this.mapWidth = this.mapEl.nativeElement.clientWidth;
   }

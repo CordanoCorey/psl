@@ -49,7 +49,6 @@ export class UsersComponent extends SmartComponent implements OnInit {
   ngOnInit(): void {
     this.sync(['users']);
     this.getUsers();
-    this.users$.subscribe(x => { console.dir(x); });
   }
 
   getUsers() {

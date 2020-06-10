@@ -1,14 +1,20 @@
 <psl-container>
-  <div class="dashboard">
+  <iu-wallpaper [images]="images" [imageOpacity]="0.4" [shuffle]="false" [maxTileHeight]="80" [minCellWidth]="20"
+    [minCellHeight]="20">
+  </iu-wallpaper>
+  <div class="dashboard" [style.height.px]="height + 200" [style.width.px]="width - scrollbarWidth">
     <psl-widgets-menu [widgets]="lkpWidgets$ | async" (add)="onAdd($event)" (remove)="deleteWidget($event)">
     </psl-widgets-menu>
-    <div class="widgets-wrapper" [style.height.px]="windowHeight" [style.width.px]="windowWidth">
+    <div class="widgets-wrapper" [style.height.px]="height" [style.width.px]="width - scrollbarWidth">
       <psl-widget *ngFor="let w of widgets" [id]="w.id" [heading]="w.label" [isFocused]="w.id === focusedId"
         [top]="w.top" [left]="w.left" [heightPx]="w.heightPx" [widthPx]="w.widthPx" [startX]="0" [startY]="84"
         [zIndex]="w.zIndex" [nextZIndex]="nextZIndex" (resized)="onResize(w, $event)" (dropped)="onDrop(w, $event)"
         (focused)="onFocus($event)" (remove)="deleteWidget($event)">
         <psl-routings-grid *ngIf="w.name === 'routings-grid'"></psl-routings-grid>
         <psl-routings-map *ngIf="w.name === 'routings-map'"></psl-routings-map>
+        <psl-carriers-market-share *ngIf="w.name === 'carriers-marketshare'"></psl-carriers-market-share>
+        <psl-order-statuses *ngIf="w.name === 'order-statuses'"></psl-order-statuses>
+        <psl-inventory *ngIf="w.name === 'distributor-inventory'"></psl-inventory>
       </psl-widget>
     </div>
   </div>

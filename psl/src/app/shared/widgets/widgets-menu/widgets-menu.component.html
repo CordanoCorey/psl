@@ -1,7 +1,15 @@
 <div class="widgets-menu">
   <span class="hint">Add Widgets to Dashboard:</span>
-  <button class="btn-widget" mat-raised-button *ngFor="let w of widgets" [disabled]="w.id !== 0" color="accent"
+  <button *ngIf="showBack" mat-fab class="arrow" (click)="back()">
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+  <mat-icon *ngIf="showBack" class="more">more_horiz</mat-icon>
+  <button class="btn-widget" mat-raised-button *ngFor="let w of visibleItems" [disabled]="w.id !== 0" color="accent"
     (click)="add.emit(w.name)" [class.disabled]="w.id !== 0">{{ w.label }}
     <mat-icon *ngIf="w.id !== 0" class="btn-remove" (click)="remove.emit(w.id)">cancel</mat-icon>
+  </button>
+  <mat-icon class="more" *ngIf="showNext">more_horiz</mat-icon>
+  <button *ngIf="showNext" mat-fab class="arrow" (click)="next()">
+    <mat-icon>navigate_next</mat-icon>
   </button>
 </div>

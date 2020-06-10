@@ -1,0 +1,7 @@
+<div class="wrapper">
+  <!-- <psl-timeframe-control></psl-timeframe-control> -->
+  <ngx-charts-pie-chart [scheme]="colorScheme" [results]="single" [gradient]="true" [legend]="true"
+    legendPosition="below" [labels]="true" [doughnut]="false" (select)="onSelect($event)"
+    (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+  </ngx-charts-pie-chart>
+</div>

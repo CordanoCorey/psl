@@ -66,7 +66,7 @@ export class WidgetComponent extends DumbComponent implements OnInit {
   }
 
   onFocus() {
-    if (!this.dragging && !this.resizing) {
+    if (!this.dragging && !this.resizing && !this.isFocused) {
       this.zIndex = this.nextZIndex;
       this.focused.emit(this.id);
     }
@@ -95,6 +95,7 @@ export class WidgetComponent extends DumbComponent implements OnInit {
 
   onMouseup(e) {
     if (this.resizing) {
+      console.log('resizing');
       this.resized.emit({
         top: this.top,
         left: this.left,

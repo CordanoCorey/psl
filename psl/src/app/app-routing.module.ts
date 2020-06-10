@@ -38,6 +38,10 @@ const routes: Routes = [{
       loadChildren: () => import('./access-denied/access-denied.module').then(m => m.AccessDeniedModule)
     },
     {
+      path: 'desktop-only',
+      loadChildren: () => import('./desktop-only/desktop-only.module').then(m => m.DesktopOnlyModule)
+    },
+    {
       path: 'accounts',
       canActivate: [AuthenticatedGuard],
       loadChildren: () => import('./accounts/accounts.module').then(m => m.AccountsModule)

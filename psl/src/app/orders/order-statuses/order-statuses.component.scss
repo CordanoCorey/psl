@@ -1,0 +1,27 @@
+@import '~@angular/material/_theming';
+@import '../../../common';
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+
+  psl-timeframe-control {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 9999999;
+  }
+
+  ngx-charts-pie-chart {
+    height: calc(100% - 100px);
+    width: 100%;
+    margin-top: 60px;
+  }
+}

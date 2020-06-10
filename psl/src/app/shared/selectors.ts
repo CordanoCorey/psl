@@ -91,24 +91,59 @@ export function userWidgetsSelector(store: Store<any>): Observable<Widget[]> {
     }));
     return userWidgets.length > 0 ? userWidgets : [
       build(Widget, {
+        name: 'order-statuses',
+        label: build(LookupValue, lkp.find(y => y.name === 'order-statuses')).label,
+        left: .05 * w,
+        top: .15 * h,
+        offsetY: .1,
+        offsetX: .05,
+        height: 375 / h,
+        width: .4,
+        heightPx: 375,
+        widthPx: .4 * w
+      }),
+      build(Widget, {
+        name: 'carriers-marketshare',
+        label: build(LookupValue, lkp.find(y => y.name === 'carriers-marketshare')).label,
+        left: .5 * w,
+        top: .15 * h,
+        offsetY: .5,
+        offsetX: .15,
+        height: 375 / h,
+        width: .45,
+        heightPx: 375,
+        widthPx: .45 * w
+      }),
+      build(Widget, {
         name: 'routings-map',
         label: build(LookupValue, lkp.find(y => y.name === 'routings-map')).label,
         left: .1 * w,
-        top: .15 * h,
+        top: 700,
         offsetY: .1,
-        offsetX: .15,
-        height: .7,
+        offsetX: 700 / h,
+        height: 700 / h,
         width: .8,
-        heightPx: .7 * h,
+        heightPx: 700,
         widthPx: .8 * w
-      })
+      }),
+      build(Widget, {
+        name: 'distributor-inventory',
+        label: build(LookupValue, lkp.find(y => y.name === 'distributor-inventory')).label,
+        left: .05 * w,
+        top: 1600,
+        offsetY: .05,
+        offsetX: 1600 / h,
+        height: .7,
+        width: .9,
+        heightPx: .7 * h,
+        widthPx: .9 * w
+      }),
     ];
   });
 }
 
 export function widgetsLookupSelector(store: Store<any>): Observable<Widget[]> {
   return combineLatest(lookupValuesSelector(store, 'lkpWidgets'), userWidgetsSelector(store), (lkpWidgets, userWidgets) => {
-    console.dir(userWidgets);
     return lkpWidgets.map(x => build(Widget, userWidgets.find(w => w.name === x.name), {
       label: x.label,
       name: x.name

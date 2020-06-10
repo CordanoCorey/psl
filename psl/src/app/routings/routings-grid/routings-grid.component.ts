@@ -42,9 +42,6 @@ export class RoutingsGridComponent extends SmartComponent implements OnInit {
   ngOnInit(): void {
     this.sync(['routings']);
     this.getRoutings();
-    this.routings$.subscribe(x => {
-      console.dir(x);
-    });
   }
 
   getRoutings() {

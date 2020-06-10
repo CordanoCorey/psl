@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SmartComponent, HttpActions, windowHeightSelector, windowWidthSelector, build, LookupValue, lookupValuesSelector, compareStrings, compareNumbers } from '@caiu/library';
+import { SmartComponent, HttpActions, windowHeightSelector, windowWidthSelector, build, Image, compareNumbers } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -14,16 +14,93 @@ import { userWidgetsSelector, currentUserIdSelector, widgetsLookupSelector } fro
 })
 export class DashboardComponent extends SmartComponent implements OnInit {
 
+  height = 0;
+  width = 0;
   lkpWidgets$: Observable<Widget[]>;
   _resizing = false;
   userId = 0;
   userId$: Observable<number>;
-  widgets: Widget[] = [];
+  _widgets: Widget[] = [];
   widgets$: Observable<Widget[]>;
   windowHeight = 0;
   windowHeight$: Observable<number>;
   windowWidth = 0;
   windowWidth$: Observable<number>;
+  images: Image[] = [
+    build(Image, {
+      src: 'assets/products/category-4wd.png',
+      height: 437,
+      width: 779
+    }),
+
+    build(Image, {
+      src: 'assets/products/category-compact.png',
+      height: 437,
+      width: 777
+    }),
+
+    build(Image, {
+      src: 'assets/products/category-rowcrop.png',
+      height: 541,
+      width: 961
+    }),
+
+    build(Image, {
+      src: 'assets/products/category-specialty.png',
+      height: 437,
+      width: 777
+    }),
+    build(Image, {
+      src: 'assets/products/category-utility.png',
+      height: 437,
+      width: 777
+    }),
+    // build(Image, {
+    //   src: 'assets/products/compact-1series.png',
+    //   height: 304,
+    //   width: 321
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/compact-2series.png',
+    //   height: 304,
+    //   width: 398
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/compact-3series.png',
+    //   height: 279,
+    //   width: 499
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/compact-4series.png',
+    //   height: 295,
+    //   width: 434
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/specialty-5075GL.png',
+    //   height: 655,
+    //   width: 762
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/specialty-5090EL.png',
+    //   height: 621,
+    //   width: 859
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/specialty-5100ML.png',
+    //   height: 567,
+    //   width: 804
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/specialty-5115ML.png',
+    //   height: 653,
+    //   width: 983
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/specialty-5125ML.png',
+    //   height: 556,
+    //   width: 831
+    // })
+  ];
 
   constructor(public store: Store<any>) {
     super(store);
@@ -32,6 +109,28 @@ export class DashboardComponent extends SmartComponent implements OnInit {
     this.widgets$ = userWidgetsSelector(store);
     this.windowHeight$ = windowHeightSelector(store);
     this.windowWidth$ = windowWidthSelector(store);
+  }
+
+  get overflowedX(): boolean {
+    return this.width > this.windowWidth;
+  }
+
+  get overflowedY(): boolean {
+    return this.height > this.windowHeight;
+  }
+
+  get scrollbarWidth(): number {
+    return this.overflowedY ? 30 : 0;
+  }
+
+  set widgets(value: Widget[]) {
+    this._widgets = value;
+    this.height = Math.max(...[...value.map(x => x.heightPx + x.top + 100), this.windowHeight]);
+    this.width = Math.max(...[...value.map(x => x.widthPx + x.left), this.windowWidth]);
+  }
+
+  get widgets(): Widget[] {
+    return this._widgets;
   }
 
   get nextZIndex(): number {
@@ -44,7 +143,7 @@ export class DashboardComponent extends SmartComponent implements OnInit {
 
   ngOnInit(): void {
     this.onInit();
-    this.sync(['userId', 'widgets', 'windowHeight', 'windowWidth']);
+    this.sync(['userId', 'windowHeight', 'windowWidth', 'widgets']);
   }
 
   onAdd(e: string) {
@@ -60,7 +159,6 @@ export class DashboardComponent extends SmartComponent implements OnInit {
   }
 
   onDrop(widget: Widget, d: Distance) {
-    console.dir(widget);
     const top = widget.top + d.y;
     const left = widget.left + d.x;
     const offsetY = top / this.windowHeight;

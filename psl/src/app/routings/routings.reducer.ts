@@ -20,7 +20,6 @@ export function routingsReducer(state: Routings = new Routings(), action: Action
   switch (action.type) {
 
     case RoutingsActions.GET:
-      console.dir(action.payload);
       return state.update(action.payload);
 
     default:

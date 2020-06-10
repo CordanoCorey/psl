@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <psl-timeframe-control></psl-timeframe-control>
+  <ngx-charts-advanced-pie-chart [scheme]="colorScheme" [results]="data" [gradient]="true" legendPosition="below"
+    [label]="label" (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+  </ngx-charts-advanced-pie-chart>
+  <mat-button-toggle-group [vertical]="true" (change)="mode = $event.value">
+    <mat-button-toggle value="TOTAL_ROUTES" [checked]="mode === 'TOTAL_ROUTES'">#</mat-button-toggle>
+    <mat-button-toggle value="TOTAL_DOLLARS" [checked]="mode === 'TOTAL_DOLLARS'">$</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

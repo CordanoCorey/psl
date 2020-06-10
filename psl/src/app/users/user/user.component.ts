@@ -28,7 +28,6 @@ export class UserComponent extends SmartComponent implements OnInit {
   }
 
   set user(value: User) {
-    console.dir(value);
     this._user = value;
     this.setValue(value);
   }
@@ -50,7 +49,6 @@ export class UserComponent extends SmartComponent implements OnInit {
 
   ngOnInit(): void {
     this.sync(['user', 'userId']);
-    console.dir(this.form.controls);
   }
 
   getUser(id: number) {

@@ -12,7 +12,31 @@
 
   .hint {
     color: $accent-color;
+    padding: 0 20px;
+  }
+
+  .arrow {
+    height: 36px;
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: mat-color($primary-palette, 700);
+    @include dark-primary-gradient-v();
+
+    mat-icon {
+      font-size: 36px;
+      height: 36px;
+      width: 36px;
+    }
+  }
+
+  .more {
+    color: mat-color($accent-palette, 500);
+    font-size: 48px;
     margin: 0 20px;
+    height: 48px;
+    width: 48px;
   }
 
   .btn-widget {
