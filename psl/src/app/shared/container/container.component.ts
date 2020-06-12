@@ -1,6 +1,6 @@
-import { Component, OnInit, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { SmartComponent, sidenavOpenedSelector, windowHeightSelector, windowWidthSelector, SidenavActions, build, Image, routeNameSelector, CurrentUserActions } from '@caiu/library';
+import { SmartComponent, sidenavOpenedSelector, windowHeightSelector, windowWidthSelector, SidenavActions, routeNameSelector, CurrentUserActions, Image, build } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -48,6 +48,7 @@ import { currentUserSelector } from '../selectors';
 })
 export class ContainerComponent extends SmartComponent implements OnInit {
   @Input() hasWallpaper = true;
+  @Output() scrolling = new EventEmitter<number>();
   currentUser: CurrentUser = new CurrentUser();
   currentUser$: Observable<CurrentUser>;
   isDarkTheme = true;
@@ -59,6 +60,81 @@ export class ContainerComponent extends SmartComponent implements OnInit {
   windowHeight$: Observable<number>;
   windowWidth = 0;
   windowWidth$: Observable<number>;
+  images: Image[] = [
+    build(Image, {
+      src: 'assets/products/category-4wd.png',
+      height: 437,
+      width: 779
+    }),
+
+    build(Image, {
+      src: 'assets/products/category-compact.png',
+      height: 437,
+      width: 777
+    }),
+
+    build(Image, {
+      src: 'assets/products/category-rowcrop.png',
+      height: 541,
+      width: 961
+    }),
+
+    build(Image, {
+      src: 'assets/products/category-specialty.png',
+      height: 437,
+      width: 777
+    }),
+    build(Image, {
+      src: 'assets/products/category-utility.png',
+      height: 437,
+      width: 777
+    }),
+    // build(Image, {
+    //   src: 'assets/products/compact-1series.png',
+    //   height: 304,
+    //   width: 321
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/compact-2series.png',
+    //   height: 304,
+    //   width: 398
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/compact-3series.png',
+    //   height: 279,
+    //   width: 499
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/compact-4series.png',
+    //   height: 295,
+    //   width: 434
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/specialty-5075GL.png',
+    //   height: 655,
+    //   width: 762
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/specialty-5090EL.png',
+    //   height: 621,
+    //   width: 859
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/specialty-5100ML.png',
+    //   height: 567,
+    //   width: 804
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/specialty-5115ML.png',
+    //   height: 653,
+    //   width: 983
+    // }),
+    // build(Image, {
+    //   src: 'assets/products/specialty-5125ML.png',
+    //   height: 556,
+    //   width: 831
+    // })
+  ];
 
   constructor(public store: Store<any>, private elementRef: ElementRef) {
     super(store);
@@ -96,6 +172,11 @@ export class ContainerComponent extends SmartComponent implements OnInit {
 
   ngOnInit() {
     this.sync(['currentUser', 'routeName', 'sidenavOpened', 'windowHeight', 'windowWidth']);
+  }
+
+  onScroll(e) {
+    const scrollTop = e.srcElement.scrollTop;
+    this.scrolling.emit(scrollTop);
   }
 
   closeSidenav() {

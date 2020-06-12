@@ -1,4 +1,7 @@
 <div id="container" [style.height.px]="windowHeight" [style.width.px]="windowWidth">
+  <iu-wallpaper *ngIf="hasWallpaper" [images]="images" [imageOpacity]="0.4" [shuffle]="false" [maxTileHeight]="80"
+    [minCellWidth]="20" [minCellHeight]="20">
+  </iu-wallpaper>
   <div class="sidenav-container scrollable" [style.min-height.px]="windowHeight" [style.width.px]="sidenavWidth"
     [@sidenavState]="sidenavOpened ? 'open' : 'closed'">
     <psl-sidenav></psl-sidenav>
@@ -10,7 +13,7 @@
   <psl-header></psl-header>
   <div id="content" class="scrollable-window parallax" [@contentState]="sidenavOpened ? 'open' : 'closed'"
     fxLayout="column" fxLayoutGap="16px" [style.left.px]="sidenavWidth" [style.width.px]="windowWidth - sidenavWidth"
-    [style.top.px]="84" [style.height.px]="windowHeight - 84">
+    [style.top.px]="84" [style.height.px]="windowHeight - 84" (scroll)="onScroll($event)">
     <ng-content></ng-content>
   </div>
 </div>

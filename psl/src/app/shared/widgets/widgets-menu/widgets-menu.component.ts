@@ -44,9 +44,7 @@ export class WidgetsMenuComponent extends DumbComponent implements OnInit {
   }
 
   next() {
-    console.log(this.totalAfter);
     this.index = this.totalAfter < this.increment ? this.index + this.totalAfter : this.index + this.increment;
-    console.log(this.index);
   }
 
 }

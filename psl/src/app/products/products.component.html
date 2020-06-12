@@ -1,2 +1,17 @@
-<psl-container>
+<psl-container [hasWallpaper]="false">
+  <!-- <psl-product-categories></psl-product-categories> -->
+  <mat-grid-list cols="3" rowHeight="300px">
+    <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows">
+      <a class="product-preview" [routerLink]="'/products/' + tile.id">
+        <!-- <mat-grid-tile-header>
+          <h4>{{ tile.categoryName }}</h4>
+        </mat-grid-tile-header> -->
+        <img [src]="tile.src">
+        <!-- <mat-grid-tile-footer>
+          <h5>{{ tile.name }}</h5>
+        </mat-grid-tile-footer> -->
+      </a>
+
+    </mat-grid-tile>
+  </mat-grid-list>
 </psl-container>

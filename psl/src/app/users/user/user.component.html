@@ -1,6 +1,13 @@
 <psl-container>
-  <button mat-button></button>
   <form [formGroup]="form">
+    <div class="row">
+      <button mat-raised-button routerLink="/users">
+        <mat-icon class="font-effect-outline">navigate_before</mat-icon>
+        <span class="btn-label font-effect-emboss">Back to All Users</span>
+      </button>
+      <h2 *ngIf="user.id !== 0">Edit {{ user.firstName }} {{ user.lastName }}</h2>
+      <h2 *ngIf="user.id === 0">Add New User</h2>
+    </div>
     <mat-form-field appearance="fill">
       <mat-label>First Name</mat-label>
       <input matInput placeholder="First Name" formControlName="firstName">
@@ -13,5 +20,13 @@
       <mat-label>Email Address</mat-label>
       <input matInput placeholder="Email Address" formControlName="email">
     </mat-form-field>
+    <div class="row actions">
+      <button mat-raised-button class="btn-delete font-effect-emboss">
+        Delete
+      </button>
+      <button mat-raised-button class="btn-save font-effect-emboss">
+        Save
+      </button>
+    </div>
   </form>
 </psl-container>

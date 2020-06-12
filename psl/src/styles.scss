@@ -149,6 +149,19 @@ ngx-charts-bar-vertical-stacked {
   }
 }
 
+mat-row {
+  cursor: pointer;
+}
+
+mat-row:hover {
+  @include mat-elevation(16);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.coming-soon-banner {
+  @include mat-elevation(1);
+}
+
 @media only screen and (max-device-width: 1366px) {
   mat-dialog-container {
     height: 100% !important;

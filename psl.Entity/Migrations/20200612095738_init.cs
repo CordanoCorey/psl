@@ -630,19 +630,19 @@ namespace psl.Entity.Migrations
                 schema: "Auth",
                 table: "User",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PasswordResetCode", "PhoneNumber", "PhoneNumberConfirmed", "PrimaryAccountId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, "f605120f-716d-40c3-9dbd-8ff473410823", "gelbaughcm@gmail.com", false, "System", "Administrator", false, null, "gelbaughcm@gmail.com", "gelbaughcm@gmail.com", "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==", null, null, false, 1, "dfafd561-8cef-40ad-8c7a-339dc67529d0", false, "gelbaughcm@gmail.com" });
+                values: new object[] { 1, 0, "f605120f-716d-40c3-9dbd-8ff473410823", "corey@capitalsoftwaresolutions.io", false, "System", "Administrator", false, null, "corey@capitalsoftwaresolutions.io", "corey@capitalsoftwaresolutions.io", "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==", null, null, false, 1, "dfafd561-8cef-40ad-8c7a-339dc67529d0", false, "corey@capitalsoftwaresolutions.io" });
 
             migrationBuilder.InsertData(
                 schema: "Auth",
                 table: "User",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PasswordResetCode", "PhoneNumber", "PhoneNumberConfirmed", "PrimaryAccountId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 2, 0, "b39b7fd6-391c-4d74-ae0c-14a75b78866d", "corey@capitalsoftwaresolutions.io", false, "Tara", "Long", false, null, "corey@capitalsoftwaresolutions.io", "corey@capitalsoftwaresolutions.io", "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==", null, null, false, 2, "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB", false, "corey@capitalsoftwaresolutions.io" });
+                values: new object[] { 2, 0, "b39b7fd6-391c-4d74-ae0c-14a75b78866d", "ben@capitalsoftwaresolutions.io", false, "Test", "User", false, null, "ben@capitalsoftwaresolutions.io", "ben@capitalsoftwaresolutions.io", "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==", null, null, false, 2, "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB", false, "ben@capitalsoftwaresolutions.io" });
 
             migrationBuilder.InsertData(
                 schema: "Auth",
                 table: "User",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PasswordResetCode", "PhoneNumber", "PhoneNumberConfirmed", "PrimaryAccountId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 3, 0, "b39b7fd6-391c-4d74-ae0c-14a75b78866d", "ben@capitalsoftwaresolutions.io", false, "John", "Deere", false, null, "ben@capitalsoftwaresolutions.io", "ben@capitalsoftwaresolutions.io", "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==", null, null, false, 2, "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB", false, "ben@capitalsoftwaresolutions.io" });
+                values: new object[] { 3, 0, "b39b7fd6-391c-4d74-ae0c-14a75b78866d", "tara_long@plantsitelogistics.com", false, "Tara", "Long", false, null, "tara_long@plantsitelogistics.com", "tara_long@plantsitelogistics.com", "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==", null, null, false, 2, "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB", false, "tara_long@plantsitelogistics.com" });
 
             migrationBuilder.InsertData(
                 schema: "Common",
@@ -733,7 +733,12 @@ namespace psl.Entity.Migrations
                 schema: "Common",
                 table: "Routing",
                 columns: new[] { "Id", "CarrierId", "CreatedById", "CreatedDate", "DestinationId", "EndTime", "LastModifiedById", "LastModifiedDate", "OriginId", "StartTime" },
-                values: new object[] { 1, 1, 1, new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, null, 1, new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[,]
+                {
+                    { 2, 2, 1, new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, 1, new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(2020, 6, 13, 14, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 1, 1, 1, new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, null, 1, new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(2020, 6, 13, 14, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, 3, 1, new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, null, 1, new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(2020, 6, 13, 14, 0, 0, 0, DateTimeKind.Unspecified) }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AccountUser_xref_AccountId",

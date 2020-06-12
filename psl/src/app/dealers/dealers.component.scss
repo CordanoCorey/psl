@@ -1,0 +1,41 @@
+@import '~@angular/material/_theming';
+@import '../../common';
+
+.wrapper {
+  width: 80%;
+  height: 100%;
+  padding: 10px 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .top {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    width: 96%;
+    padding: 0 2%;
+
+    a {
+      @include primary-gradient();
+      height: 40px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      mat-icon {
+        color: #000;
+      }
+    }
+  }
+
+
+  psl-dealers-grid {
+    margin-top: 150px;
+    width: 50%;
+    display: block;
+  }
+}

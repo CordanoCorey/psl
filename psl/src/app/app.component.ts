@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -22,8 +22,7 @@ import {
   HttpActions,
   RouterActions,
   urlPathSelector,
-  SidenavActions,
-  routeParamSelector
+  SidenavActions
 } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -42,7 +41,7 @@ var ACCESS_CODE = '7CB24B34B9D5CC5F';
   styleUrls: ['./app.component.scss']
 }
 
-) export class AppComponent extends SmartComponent implements OnInit {
+) export class AppComponent extends SmartComponent implements OnInit, AfterViewInit {
   contestantId = 0;
   contestantId$: Observable<number>;
   errorMessage$: Observable<string>;
@@ -191,7 +190,6 @@ var ACCESS_CODE = '7CB24B34B9D5CC5F';
   }
 
   ngAfterViewInit() {
-    console.log(this.isMobile);
     if (this.isMobile) {
       this.dispatch(RouterActions.navigate('/desktop-only'));
     }

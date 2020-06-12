@@ -14,5 +14,5 @@
     (click)="onFocus()">
     <ng-content></ng-content>
   </div>
-  <mat-icon *ngIf="isFocused" class="btn-remove" (click)="remove.emit(id)">cancel</mat-icon>
+  <mat-icon *ngIf="isFocused" class="btn-remove" (click)="onRemove()">cancel</mat-icon>
 </div>

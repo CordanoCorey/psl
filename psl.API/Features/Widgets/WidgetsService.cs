@@ -8,10 +8,12 @@ namespace psl.API.Features.Widgets
     public interface IWidgetsService
     {
         IEnumerable<WidgetModel> GetUserWidgets(int userId);
+        IEnumerable<WidgetModel> AddUserWidgets(int userId, IEnumerable<WidgetModel> widgets);
         WidgetModel GetWidget(int id);
         WidgetModel AddWidget(WidgetModel model);
         WidgetModel UpdateWidget(WidgetModel model);
         void DeleteWidget(int id);
+        void DeleteUserWidgets(int userId);
     }
 
     public class WidgetsService : IWidgetsService
@@ -23,10 +25,29 @@ namespace psl.API.Features.Widgets
             _repo = repo;
         }
 
+        public IEnumerable<WidgetModel> AddUserWidgets(int userId, IEnumerable<WidgetModel> widgets)
+        {
+            DeleteUserWidgets(userId);
+            foreach (var w in widgets)
+            {
+                w.UserId = userId;
+            }
+            _repo.Insert(widgets);
+            return GetUserWidgets(userId);
+        }
+
         public WidgetModel AddWidget(WidgetModel model)
         {
             var inserted = _repo.Insert(model);
             return GetWidget(inserted.Id);
+        }
+
+        public void DeleteUserWidgets(int userId)
+        {
+            foreach (var widget in GetUserWidgets(userId))
+            {
+                DeleteWidget(widget.Id);
+            }
         }
 
         public void DeleteWidget(int id)

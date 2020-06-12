@@ -85,6 +85,11 @@ const routes: Routes = [{
       loadChildren: () => import('./processes/processes.module').then(m => m.ProcessesModule)
     },
     {
+      path: 'orders',
+      canActivate: [AuthenticatedGuard],
+      loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)
+    },
+    {
       path: 'products',
       canActivate: [AuthenticatedGuard],
       loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)

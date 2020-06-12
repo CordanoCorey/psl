@@ -14,6 +14,8 @@ import {
 } from '@caiu/library';
 import { ActionReducerMap } from '@ngrx/store';
 
+import { carriersReducer } from './carriers/carriers.reducer';
+import { dealersReducer } from './dealers/dealers.reducer';
 import { routingsReducer } from './routings/routings.reducer';
 import { currentUserReducer, usersReducer, accessCodeReducer, widgetsReducer } from './shared/reducers';
 
@@ -41,6 +43,8 @@ export class ReducersService {
       widgets: widgetsReducer,
       window: windowReducer,
       users: usersReducer,
+      carriers: carriersReducer,
+      dealers: dealersReducer,
       routings: routingsReducer
     };
   }

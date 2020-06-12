@@ -9,5 +9,6 @@ namespace psl.API.Features.Dealers
     public class DealerModel : BaseEntity
     {
         public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

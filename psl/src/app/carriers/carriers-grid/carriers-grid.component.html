@@ -1,18 +1,27 @@
 <div class="grid">
   <mat-table [dataSource]="carriers" class="scrollable" matSort (matSortChange)="onSort($event)">
 
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header (click)="onSort('Id')">
-        ID
-      </mat-header-cell>
+    <!-- Image Column -->
+    <ng-container matColumnDef="src">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header></mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.id }}
+        <img [src]="element.src">
       </mat-cell>
     </ng-container>
-    <!-- ID Column -->
+    <!-- Image Column -->
 
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header (click)="onSort('name')">
+        Carrier
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.name }}
+      </mat-cell>
+    </ng-container>
+    <!-- Name Column -->
+
+    <mat-row *matRowDef="let row; columns: displayedColumns" [routerLink]="'/carriers/' + row.id"></mat-row>
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
   </mat-table>
   <div *ngIf="carriers?.length === 0" class="no-results">No carriers match search criteria.</div>

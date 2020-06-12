@@ -4,11 +4,63 @@
 form {
   @include mat-elevation(4);
   width: 50%;
-  padding: 60px 20px;
+  padding: 100px 20px;
   margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #fff;
+  position: relative;
+
+  .row {
+    width: 90%;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    .mat-raised-button {
+      margin-right: 20px;
+
+      mat-icon {
+        color: #fff;
+      }
+
+      .btn-label {
+        color: #000;
+      }
+
+      @include accent-gradient();
+    }
+  }
+
+  .row.actions {
+    top: unset;
+    left: unset;
+    bottom: 0px;
+    right: 5%;
+    justify-content: flex-end;
+
+    .mat-raised-button {
+      color: #fff;
+      margin-right: 20px;
+      @include primary-gradient();
+      font-size: 20px;
+      padding: 8px 24px;
+    }
+
+    .mat-raised-button.btn-save {
+      @include primary-gradient();
+    }
+
+    .mat-raised-button.btn-delete {
+      background: red;
+    }
+  }
 
   mat-form-field {
     width: 90%;

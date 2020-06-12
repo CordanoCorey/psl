@@ -16,10 +16,9 @@
   align-items: center;
 
   .wrapper {
-    @include mat-elevation(1);
     width: 60%;
     padding: 20px 10%;
-    margin-top: 5%;
+    margin-top: 15%;
     display: flex;
     flex-direction: column;
     align-items: center;

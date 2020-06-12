@@ -1,7 +1,11 @@
 <psl-container>
   <div class="wrapper">
     <div class="top">
-      <h2>Routings</h2>
+      <h1 class="frosted">Routings</h1>
+      <a class="btn-add" mat-raised-button routerLink="/routings/0">
+        <mat-icon>add</mat-icon>
+        <span class="button-text">New Routing</span>
+      </a>
     </div>
 
     <form [formGroup]="form">

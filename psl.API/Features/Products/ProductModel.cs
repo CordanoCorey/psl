@@ -9,5 +9,6 @@ namespace psl.API.Features.Products
     public class ProductModel : BaseEntity
     {
         public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -1,19 +1,75 @@
 @import '~@angular/material/_theming';
 
-$primary-palette: (50: #b2d2fb,
-  100: #8cbcfa,
-  200: #67a7f8,
-  300: #4191f6,
-  400: #1c7bf4,
-  500: #063C81,
-  600: #0b70f1,
-  700: #095fcc,
-  800: #084da6,
-  900: #063c81,
-  A100: #1c60b8,
-  A200: #094a9d,
-  A400: #042f68,
-  A700: #02214a,
+// $primary-palette: (50: #b2d2fb,
+//   100: #8cbcfa,
+//   200: #67a7f8,
+//   300: #4191f6,
+//   400: #1c7bf4,
+//   500: #063C81,
+//   600: #0b70f1,
+//   700: #095fcc,
+//   800: #084da6,
+//   900: #063c81,
+//   A100: #1c60b8,
+//   A200: #094a9d,
+//   A400: #042f68,
+//   A700: #02214a,
+//   contrast: (50: $black-87-opacity,
+//     100: $black-87-opacity,
+//     200: $black-87-opacity,
+//     300: $black-87-opacity,
+//     400: $black-87-opacity,
+//     500: white,
+//     600: white,
+//     700: white,
+//     800: $white-87-opacity,
+//     900: $white-87-opacity,
+//     A100: $black-87-opacity,
+//     A200: white,
+//     A400: white,
+//     A700: white));
+// $accent-palette: (50: #f8e1b3,
+//   100: #f5d38e,
+//   200: #f2c56a,
+//   300: #efb746,
+//   400: #eca922,
+//   500: #ECA922,
+//   600: #e7a114,
+//   700: #c28711,
+//   800: #9e6e0e,
+//   900: #7a550b,
+//   A100: #ffd277,
+//   A200: #fac14e,
+//   A400: #c0840b,
+//   A700: #986500,
+//   contrast: (50: $black-87-opacity,
+//     100: $black-87-opacity,
+//     200: $black-87-opacity,
+//     300: $black-87-opacity,
+//     400: $black-87-opacity,
+//     500: white,
+//     600: white,
+//     700: white,
+//     800: $white-87-opacity,
+//     900: $white-87-opacity,
+//     A100: $black-87-opacity,
+//     A200: white,
+//     A400: white,
+//     A700: white));
+$primary-palette: (50: #9cd992,
+  100: #81cf75,
+  200: #67c558,
+  300: #4fb63f,
+  400: #439935,
+  500: #367C2B,
+  600: #306d26,
+  700: #295f21,
+  800: #23501c,
+  900: #1d4217,
+  A100: #7EB975,
+  A200: #529647,
+  A400: #1E5F14,
+  A700: #0B3E03,
   contrast: (50: $black-87-opacity,
     100: $black-87-opacity,
     200: $black-87-opacity,
@@ -28,20 +84,20 @@ $primary-palette: (50: #b2d2fb,
     A200: white,
     A400: white,
     A700: white));
-$accent-palette: (50: #f8e1b3,
-  100: #f5d38e,
-  200: #f2c56a,
-  300: #efb746,
-  400: #eca922,
-  500: #ECA922,
-  600: #e7a114,
-  700: #c28711,
-  800: #9e6e0e,
-  900: #7a550b,
-  A100: #ffd277,
-  A200: #fac14e,
-  A400: #c0840b,
-  A700: #986500,
+$accent-palette: (50: #fff7c4,
+  100: #fff29d,
+  200: #ffed76,
+  300: #ffe84e,
+  400: #ffe327,
+  500: #ffde00,
+  600: #ebcd00,
+  700: #d8bc00,
+  800: #c4ab00,
+  900: #b19a00,
+  A100: #ffeb64,
+  A200: #ffe639,
+  A400: #c6ac00,
+  A700: #9c8800,
   contrast: (50: $black-87-opacity,
     100: $black-87-opacity,
     200: $black-87-opacity,
@@ -69,35 +125,35 @@ $accent-color: mat-color($accent-palette, 500);
 
 @mixin scrollable($color: #aebfbe, $background-color: #c7d0cf) {
   .scrollable::-webkit-scrollbar-track {
-    background-color: $background-color;
+    @include primary-gradient();
   }
 
   .scrollable::-webkit-scrollbar {
     width: 20px;
-    background-color: $background-color;
   }
 
   .scrollable::-webkit-scrollbar-thumb {
-    background-color: $color;
     border-radius: 20px;
-    @include silver-gradient();
-    z-index: 11;
+    @include light-accent-gradient();
+    z-index: 99999;
+    cursor: grab;
   }
 
   .scrollable-window::-webkit-scrollbar-track {
-    background-color: $background-color;
+    @include light-accent-gradient();
+    cursor: grab;
   }
 
   .scrollable-window::-webkit-scrollbar {
     width: 30px;
-    background-color: $background-color;
+    cursor: grab;
   }
 
   .scrollable-window::-webkit-scrollbar-thumb {
-    background-color: $color;
     border-radius: 30px;
-    @include silver-gradient();
-    z-index: 11;
+    @include primary-gradient();
+    z-index: 999999999;
+    cursor: grab;
   }
 }
 

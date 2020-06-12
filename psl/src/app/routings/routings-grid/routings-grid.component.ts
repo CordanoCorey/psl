@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
-import { SmartComponent, HttpActions } from '@caiu/library';
+import { SmartComponent, HttpActions, RouterActions } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable, BehaviorSubject } from 'rxjs';
 
@@ -28,7 +28,7 @@ export class RoutingsGridComponent extends SmartComponent implements OnInit {
   }
 
   get displayedColumns(): string[] {
-    return ['id', 'carrierName', 'startDate', 'originName', 'originCity', 'originState', 'destinationName', 'destinationCity', 'destinationState'];
+    return ['id', 'carrier', 'startTime', 'origin', 'originCity', 'originState', 'destination', 'destinationCity', 'destinationState'];
   }
 
   set query(value: RoutingsQuery) {
@@ -42,10 +42,15 @@ export class RoutingsGridComponent extends SmartComponent implements OnInit {
   ngOnInit(): void {
     this.sync(['routings']);
     this.getRoutings();
+    this.routings$.subscribe(x => { console.dir(x); });
   }
 
   getRoutings() {
     this.dispatch(HttpActions.get(`routings`, RoutingsActions.GET));
+  }
+
+  onClickRow(e: Routing) {
+    this.dispatch(RouterActions.navigate(`/routings/${e.id}`));
   }
 
   onSort(e) {

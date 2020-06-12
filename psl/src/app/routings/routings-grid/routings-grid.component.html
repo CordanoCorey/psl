@@ -13,30 +13,30 @@
     <!-- ID Column -->
 
     <!-- Carrier Column -->
-    <ng-container matColumnDef="carrierName">
+    <ng-container matColumnDef="carrier">
       <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header
         (click)="onSort('CarrierName')">
         Carrier
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.carrierName }}
+        <img [src]="element.carrierSrc">
       </mat-cell>
     </ng-container>
     <!-- Carrier Column -->
 
     <!-- Start Date Column -->
-    <ng-container matColumnDef="startDate">
+    <ng-container matColumnDef="startTime">
       <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header (click)="onSort('Id')">
         Start
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.startDate | date:'shortDate' }}
+        {{ element.startTime | date:'shortTime' }}
       </mat-cell>
     </ng-container>
     <!-- Start Date Column -->
 
     <!-- Origin Name Column -->
-    <ng-container matColumnDef="originName">
+    <ng-container matColumnDef="origin">
       <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header
         (click)="onSort('OriginName')">
         Origin
@@ -72,13 +72,13 @@
     <!-- Origin State Column -->
 
     <!-- Destination Name Column -->
-    <ng-container matColumnDef="destinationName">
+    <ng-container matColumnDef="destination">
       <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header
         (click)="onSort('DestinationName')">
         Destination
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.destinationName }}
+        <img [src]="element.destinationSrc">
       </mat-cell>
     </ng-container>
     <!-- Destination Name Column -->
@@ -107,7 +107,7 @@
     </ng-container>
     <!-- Destination State Column -->
 
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onClickRow(row)"></mat-row>
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
   </mat-table>
   <div *ngIf="routings?.length === 0" class="no-results">No routings match search criteria.</div>

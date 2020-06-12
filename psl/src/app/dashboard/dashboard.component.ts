@@ -13,11 +13,11 @@ import { userWidgetsSelector, currentUserIdSelector, widgetsLookupSelector } fro
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent extends SmartComponent implements OnInit {
-
   height = 0;
   width = 0;
   lkpWidgets$: Observable<Widget[]>;
   _resizing = false;
+  scrollTop = 0;
   userId = 0;
   userId$: Observable<number>;
   _widgets: Widget[] = [];
@@ -26,81 +26,6 @@ export class DashboardComponent extends SmartComponent implements OnInit {
   windowHeight$: Observable<number>;
   windowWidth = 0;
   windowWidth$: Observable<number>;
-  images: Image[] = [
-    build(Image, {
-      src: 'assets/products/category-4wd.png',
-      height: 437,
-      width: 779
-    }),
-
-    build(Image, {
-      src: 'assets/products/category-compact.png',
-      height: 437,
-      width: 777
-    }),
-
-    build(Image, {
-      src: 'assets/products/category-rowcrop.png',
-      height: 541,
-      width: 961
-    }),
-
-    build(Image, {
-      src: 'assets/products/category-specialty.png',
-      height: 437,
-      width: 777
-    }),
-    build(Image, {
-      src: 'assets/products/category-utility.png',
-      height: 437,
-      width: 777
-    }),
-    // build(Image, {
-    //   src: 'assets/products/compact-1series.png',
-    //   height: 304,
-    //   width: 321
-    // }),
-    // build(Image, {
-    //   src: 'assets/products/compact-2series.png',
-    //   height: 304,
-    //   width: 398
-    // }),
-    // build(Image, {
-    //   src: 'assets/products/compact-3series.png',
-    //   height: 279,
-    //   width: 499
-    // }),
-    // build(Image, {
-    //   src: 'assets/products/compact-4series.png',
-    //   height: 295,
-    //   width: 434
-    // }),
-    // build(Image, {
-    //   src: 'assets/products/specialty-5075GL.png',
-    //   height: 655,
-    //   width: 762
-    // }),
-    // build(Image, {
-    //   src: 'assets/products/specialty-5090EL.png',
-    //   height: 621,
-    //   width: 859
-    // }),
-    // build(Image, {
-    //   src: 'assets/products/specialty-5100ML.png',
-    //   height: 567,
-    //   width: 804
-    // }),
-    // build(Image, {
-    //   src: 'assets/products/specialty-5115ML.png',
-    //   height: 653,
-    //   width: 983
-    // }),
-    // build(Image, {
-    //   src: 'assets/products/specialty-5125ML.png',
-    //   height: 556,
-    //   width: 831
-    // })
-  ];
 
   constructor(public store: Store<any>) {
     super(store);
@@ -109,6 +34,10 @@ export class DashboardComponent extends SmartComponent implements OnInit {
     this.widgets$ = userWidgetsSelector(store);
     this.windowHeight$ = windowHeightSelector(store);
     this.windowWidth$ = windowWidthSelector(store);
+  }
+
+  get hasDefaultWidgets(): boolean {
+    return this.widgets.findIndex(x => x.id === 0) !== -1;
   }
 
   get overflowedX(): boolean {
@@ -158,6 +87,14 @@ export class DashboardComponent extends SmartComponent implements OnInit {
     }));
   }
 
+  onDelete(e: any) {
+    if (e.id !== 0) {
+      this.deleteWidget(e.id);
+    } else {
+      this.saveUserWidgets(this.widgets.filter(x => x.name !== e.key));
+    }
+  }
+
   onDrop(widget: Widget, d: Distance) {
     const top = widget.top + d.y;
     const left = widget.left + d.x;
@@ -171,8 +108,8 @@ export class DashboardComponent extends SmartComponent implements OnInit {
       zIndex: d.zIndex,
       userId: this.userId
     });
-    if (widget.id === 0) {
-      this.addWidget(w);
+    if (this.hasDefaultWidgets) {
+      this.saveUserWidgets(this.widgets.map(x => x.name === w.name ? w : x));
     } else {
       this.updateWidget(w);
     }
@@ -185,7 +122,7 @@ export class DashboardComponent extends SmartComponent implements OnInit {
   onResize(widget: Widget, e: any) {
     const offsetY = e.top / this.windowHeight;
     const offsetX = e.left / this.windowWidth;
-    this.updateWidget(build(Widget, widget, {
+    const w = build(Widget, widget, {
       top: e.top,
       left: e.left,
       offsetX,
@@ -193,15 +130,24 @@ export class DashboardComponent extends SmartComponent implements OnInit {
       width: e.widthPx / this.windowWidth,
       height: e.heightPx / this.windowHeight,
       zIndex: e.zIndex
-    }));
+    });
+    if (this.hasDefaultWidgets) {
+      this.saveUserWidgets(this.widgets.map(x => x.name === w.name ? w : x));
+    } else {
+      this.updateWidget(w);
+    }
   }
 
   justifyLeft() {
 
   }
 
+  saveUserWidgets(e: Widget[]) {
+    this.dispatch(HttpActions.post(`widgets/user`, e, WidgetsActions.POST));
+  }
+
   addWidget(e: Widget) {
-    this.dispatch(HttpActions.post(`widgets`, e, WidgetsActions.POST, WidgetsActions.POST));
+    this.dispatch(HttpActions.post(`widgets`, e, WidgetsActions.POST, WidgetsActions.POST_ERROR));
   }
 
   deleteWidget(e: number) {

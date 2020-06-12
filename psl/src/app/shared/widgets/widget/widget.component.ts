@@ -13,17 +13,20 @@ export class WidgetComponent extends DumbComponent implements OnInit {
   @Input() heading = '';
   @Input() id = 0;
   @Input() isFocused = false;
+  @Input() key = '';
   @Input() widthPx = 600;
   @Input() heightPx = 300;
   @Input() top = 0;
   @Input() left = 0;
+  @Input() scrollLeft = 0;
+  @Input() scrollTop = 0;
   @Input() startX = 0;
   @Input() startY = 0;
   @Input() zIndex = 1;
   @Input() nextZIndex = 1;
   @Output() dropped = new EventEmitter();
   @Output() focused = new EventEmitter<number>();
-  @Output() remove = new EventEmitter<number>();
+  @Output() remove = new EventEmitter();
   @Output() resized = new EventEmitter();
   cursorStyle = 'move';
   dragging = false;
@@ -95,7 +98,6 @@ export class WidgetComponent extends DumbComponent implements OnInit {
 
   onMouseup(e) {
     if (this.resizing) {
-      console.log('resizing');
       this.resized.emit({
         top: this.top,
         left: this.left,
@@ -109,15 +111,22 @@ export class WidgetComponent extends DumbComponent implements OnInit {
     });
   }
 
+  onRemove() {
+    this.remove.emit({
+      id: this.id,
+      key: this.key
+    });
+  }
+
   onResize() {
-    const dY = this.top - (this.pageY - this.startY);
+    const dY = this.top - ((this.pageY + this.scrollTop) - this.startY);
     const dX = this.left - (this.pageX - this.startX);
     if (this.mouseTop) {
       this.top = this.top - dY;
       this.heightPx = this.heightPx + dY;
     }
     if (this.mouseBottom) {
-      this.heightPx = this.pageY - this.startY - this.top;
+      this.heightPx = (this.pageY + this.scrollTop) - this.startY - this.top;
     }
     if (this.mouseLeft) {
       this.left = this.left - dX;
@@ -133,10 +142,10 @@ export class WidgetComponent extends DumbComponent implements OnInit {
       && this.left + this.startX - this.pageX <= this.borderWidth;
     this.mouseRight = this.pageX - (this.widthPx + this.left + this.startX) >= 0
       && this.pageX - (this.widthPx + this.left + this.startX) <= this.borderWidth;
-    this.mouseTop = this.top + this.startY - this.pageY >= 0
-      && this.top + this.startY - this.pageY <= this.borderWidth;
-    this.mouseBottom = this.pageY - (this.heightPx + this.top + this.startY) >= 0
-      && this.pageY - (this.heightPx + this.top + this.startY) <= this.borderWidth;
+    this.mouseTop = this.top + this.startY - (this.pageY + this.scrollTop) >= 0
+      && this.top + this.startY - (this.pageY + this.scrollTop) <= this.borderWidth;
+    this.mouseBottom = (this.pageY + this.scrollTop) - (this.heightPx + this.top + this.startY) >= 0
+      && (this.pageY + this.scrollTop) - (this.heightPx + this.top + this.startY) <= this.borderWidth;
     if (this.mouseTop && this.mouseLeft) { // top-left
       this.cursorStyle = 'nw-resize';
     } else if (this.mouseBottom && this.mouseRight) { // bottom-right

@@ -20,7 +20,6 @@ import { WidgetsModule } from '../shared/widgets/widgets.module';
     OrdersModule,
     ProductsModule,
     RoutingsModule,
-    WallpaperModule,
     WidgetsModule
   ]
 })

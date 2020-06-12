@@ -10,7 +10,7 @@ using psl.Entity.Context;
 namespace psl.Entity.Migrations
 {
     [DbContext(typeof(PSLContext))]
-    [Migration("20200608074440_init")]
+    [Migration("20200612095738_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -334,48 +334,29 @@ namespace psl.Entity.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             ConcurrencyStamp = "f605120f-716d-40c3-9dbd-8ff473410823",
-                            Email = "gelbaughcm@gmail.com",
+                            Email = "corey@capitalsoftwaresolutions.io",
                             EmailConfirmed = false,
                             FirstName = "System",
                             LastName = "Administrator",
                             LockoutEnabled = false,
-                            NormalizedEmail = "gelbaughcm@gmail.com",
-                            NormalizedUserName = "gelbaughcm@gmail.com",
+                            NormalizedEmail = "corey@capitalsoftwaresolutions.io",
+                            NormalizedUserName = "corey@capitalsoftwaresolutions.io",
                             PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
                             PhoneNumberConfirmed = false,
                             PrimaryAccountId = 1,
                             SecurityStamp = "dfafd561-8cef-40ad-8c7a-339dc67529d0",
                             TwoFactorEnabled = false,
-                            UserName = "gelbaughcm@gmail.com"
+                            UserName = "corey@capitalsoftwaresolutions.io"
                         },
                         new
                         {
                             Id = 2,
                             AccessFailedCount = 0,
                             ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
-                            Email = "corey@capitalsoftwaresolutions.io",
-                            EmailConfirmed = false,
-                            FirstName = "Tara",
-                            LastName = "Long",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "corey@capitalsoftwaresolutions.io",
-                            NormalizedUserName = "corey@capitalsoftwaresolutions.io",
-                            PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
-                            PhoneNumberConfirmed = false,
-                            PrimaryAccountId = 2,
-                            SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
-                            TwoFactorEnabled = false,
-                            UserName = "corey@capitalsoftwaresolutions.io"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
                             Email = "ben@capitalsoftwaresolutions.io",
                             EmailConfirmed = false,
-                            FirstName = "John",
-                            LastName = "Deere",
+                            FirstName = "Test",
+                            LastName = "User",
                             LockoutEnabled = false,
                             NormalizedEmail = "ben@capitalsoftwaresolutions.io",
                             NormalizedUserName = "ben@capitalsoftwaresolutions.io",
@@ -385,6 +366,25 @@ namespace psl.Entity.Migrations
                             SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
                             TwoFactorEnabled = false,
                             UserName = "ben@capitalsoftwaresolutions.io"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b39b7fd6-391c-4d74-ae0c-14a75b78866d",
+                            Email = "tara_long@plantsitelogistics.com",
+                            EmailConfirmed = false,
+                            FirstName = "Tara",
+                            LastName = "Long",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "tara_long@plantsitelogistics.com",
+                            NormalizedUserName = "tara_long@plantsitelogistics.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAELOBJuVxexUotv2KcwjrXvL1y7w0fqQDt0OZqrA9SBRw2KUWbDCzhlJPFU7Y7P+u7Q==",
+                            PhoneNumberConfirmed = false,
+                            PrimaryAccountId = 2,
+                            SecurityStamp = "YSMHWI6B5ZHJFY4JDYXCHTUO52NXZWXB",
+                            TwoFactorEnabled = false,
+                            UserName = "tara_long@plantsitelogistics.com"
                         });
                 });
 
@@ -1102,7 +1102,31 @@ namespace psl.Entity.Migrations
                             LastModifiedById = 1,
                             LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OriginId = 1,
-                            StartTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartTime = new DateTime(2020, 6, 13, 14, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CarrierId = 2,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DestinationId = 1,
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OriginId = 1,
+                            StartTime = new DateTime(2020, 6, 13, 14, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CarrierId = 3,
+                            CreatedById = 1,
+                            CreatedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DestinationId = 3,
+                            LastModifiedById = 1,
+                            LastModifiedDate = new DateTime(2020, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            OriginId = 1,
+                            StartTime = new DateTime(2020, 6, 13, 14, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

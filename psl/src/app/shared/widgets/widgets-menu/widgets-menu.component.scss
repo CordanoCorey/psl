@@ -42,8 +42,8 @@
   .btn-widget {
     //@include accent-gradient();
     margin: 5px 10px;
-    color: #fff;
     position: relative;
+    color: #000;
 
     .btn-remove {
       position: absolute;
@@ -57,5 +57,6 @@
 
   .btn-widget.disabled {
     padding-right: 40px;
+    color: #fff;
   }
 }

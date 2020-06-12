@@ -20,7 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { FormsModule, AccordionModule, DialogModule, PipesModule } from '@caiu/library';
+import { FormsModule, AccordionModule, DialogModule, PipesModule, WallpaperModule } from '@caiu/library';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ContainerComponent } from './container/container.component';
@@ -59,7 +59,7 @@ import { TimeframeControlComponent } from './timeframe-control/timeframe-control
     MatTabsModule,
     NgxChartsModule,
     PipesModule,
-    RouterModule
+    WallpaperModule
   ],
   exports: [
     CommonModule,

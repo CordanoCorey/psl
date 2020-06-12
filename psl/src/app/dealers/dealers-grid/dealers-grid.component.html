@@ -1,0 +1,31 @@
+<div class="grid">
+  <mat-table [dataSource]="dealers" class="scrollable" matSort (matSortChange)="onSort($event)">
+
+    <!-- Image Column -->
+    <ng-container matColumnDef="src">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img [src]="element.src">
+      </mat-cell>
+    </ng-container>
+    <!-- Image Column -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef class="font-effect-emboss sortable" mat-sort-header (click)="onSort('name')">
+        Dealer
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.name }}
+      </mat-cell>
+    </ng-container>
+    <!-- Name Column -->
+
+    <mat-row *matRowDef="let row; columns: displayedColumns" [routerLink]="'/dealers/' + row.id"></mat-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+  </mat-table>
+  <div *ngIf="dealers?.length === 0" class="no-results">No dealers match search criteria.</div>
+  <mat-paginator [pageSize]="query.take" [pageSizeOptions]="[10, 20, 50, 100]" [length]="searchTotal"
+    (page)="pageSubject.next($event)" showFirstLastButtons>
+  </mat-paginator>
+</div>

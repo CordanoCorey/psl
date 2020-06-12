@@ -6,17 +6,39 @@
     text-align: center;
   }
 
-  .mat-header-cell.mat-column-carrierName,
-  .mat-header-cell.mat-column-destinationName,
+  .mat-header-cell.mat-column-destination,
   .mat-header-cell.mat-column-destinationCity,
-  .mat-header-cell.mat-column-destinationState,
-  .mat-header-cell.mat-column-originName,
-  .mat-header-cell.mat-column-originCity,
-  .mat-header-cell.mat-column-originState {
+  .mat-header-cell.mat-column-origin,
+  .mat-header-cell.mat-column-originCity {
     min-width: 72px;
   }
 
   .mat-column-id {
     max-width: 48px;
+  }
+
+  .mat-column-startTime {
+    max-width: 84px;
+  }
+
+  .mat-column-carrier {
+    min-width: 160px;
+
+    img {
+      width: 80%;
+    }
+  }
+
+  .mat-header-cell.mat-column-destinationState,
+  .mat-header-cell.mat-column-originState {
+    min-width: 28px;
+  }
+
+  .mat-column-destination {
+    height: 100px;
+
+    img {
+      height: 80%;
+    }
   }
 }

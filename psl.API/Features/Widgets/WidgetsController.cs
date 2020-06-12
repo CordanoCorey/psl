@@ -28,6 +28,16 @@ namespace psl.API.Features.Widgets
         }
 
         /**
+         *  POST: api/widgets/user
+         */
+        [HttpPost("user")]
+        public IActionResult AddUserWidgets([FromBody]IEnumerable<WidgetModel> model)
+        {
+            var result = _service.AddUserWidgets(UserId, model);
+            return Ok(result);
+        }
+
+        /**
          *  POST: api/widgets
          */
         [HttpPost]

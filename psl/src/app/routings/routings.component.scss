@@ -6,6 +6,29 @@
   height: 100%;
   padding: 10px 3%;
 
+  .top {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    width: 96%;
+    padding: 0 2%;
+
+    a {
+      @include primary-gradient();
+      height: 40px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      mat-icon {
+        color: #000;
+      }
+    }
+  }
+
   psl-routings-grid {
     @include mat-elevation(4);
     display: block;

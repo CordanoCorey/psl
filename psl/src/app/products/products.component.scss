@@ -1,0 +1,57 @@
+@import '~@angular/material/_theming';
+@import '../../common';
+
+mat-grid-list {
+  width: 100%;
+  margin-top: 100px;
+}
+
+.product-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  mat-grid-tile-header {
+    color: mat-color($primary-palette, 900);
+    font-weight: bold;
+  }
+
+  mat-grid-tile-footer {
+    height: 35%;
+
+    h5 {
+      width: 90%;
+    }
+
+    h3 {
+      color: $accent-color;
+    }
+  }
+
+  a {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+h3 {
+  color: black;
+  font-weight: bold;
+}
+
+mat-grid-tile {
+  border: 1px solid #efefef;
+}
+
+
+mat-grid-tile:hover {
+  @include mat-elevation(16);
+}
